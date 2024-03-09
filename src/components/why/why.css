@@ -42,7 +42,7 @@
 }
 
 .why-choose-us-card:hover span{
-    color: rgb(91, 91, 211);
+    color: var(--secondary-color);
     transition: all 0.2s ease-in-out !important;
 }
 

@@ -28,15 +28,7 @@
   justify-content: center;
   box-shadow: 0px 0px 10px #e8e8e8;
 }
-.whatsapp-icon a{
-  padding: 5px;
-  font-size: 2.5rem;
-  color: green;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+
 html{
   scroll-behavior: smooth;
   overflow-x: hidden;
@@ -65,7 +57,7 @@ body{
   --secondary-color:rgb(46, 46, 83);
   --secondary-mild:rgb(4, 57, 133);
   --mild-color:#ddd;
-  --dark-mild:#174cbe;
+  --dark-mild:rgb(46, 46, 83);
   --color-variant:rgb(201, 170, 126);
   --dark:rgb(31, 30, 88);
 }
@@ -96,6 +88,7 @@ p{
   font-size: 1rem;
   font-family: Open Sans,'roboto','Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   line-height: 25px;
+  color: var(--secondary-color);
 }
 a{
   font-family: 'Poppins','Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -129,7 +122,7 @@ button {
   width: 40px ;
   margin-right: 10px;
   height: 2px;
-  background-color: var(--facebook-variant);
+  background-color: var(--secondary-color);
 }
 .why-choose-us-text-container h1{
   color: var(--dark);
@@ -320,7 +313,6 @@ button {
   padding: 5px;
   bottom:7%;
   right: 10px;
-  /* transform: translateY(-50%); */
   cursor: pointer;
   padding: 5px;
   display: flex;
@@ -387,7 +379,7 @@ button {
   padding: 1em 1.8em;
   background: var(--primary-color);
   display: flex;
-  transition: 0.2s background;
+  transition: 0.2s ease-in-out;
   align-items: center;
   gap: 0.6em;
   font-weight: bold;

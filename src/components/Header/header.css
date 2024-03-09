@@ -70,16 +70,17 @@ nav ul li a {
 .logo-container{
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     width: 20%;
     overflow: hidden;
-    padding-left: 75px;
+    padding-left: 90px;
 }
 .logo{
-    object-fit: contain;
+    object-fit: contain ;
     cursor: pointer;
-    width: 100%;
-    align-self: center;
+    width: 30%;
+    align-self: flex-start;
+    height: auto;
 }
 .txtlogo{
     height: 80px;

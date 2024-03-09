@@ -13,10 +13,10 @@
     position: relative;
     align-self: flex-start;
 }
-.about-img-container video{
-    width: 100%;
-    object-fit: contain;
-    height: 100%;
+.about-img-container img{
+    width: 70%;
+    object-fit: cover;
+    height: 70%;
 }
 
 .about-text{

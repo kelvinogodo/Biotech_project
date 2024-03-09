@@ -24,7 +24,7 @@ const About = () => {
             </button>
         </div>
         <div className="about-img-container">
-            <video controls src="/lv_0_20230607092520.mp4" data-aos="fade-up" className='about-img'/>
+            <img src="/nibelogo'.gif" data-aos="fade-up" className='about-img'/>
         </div>
         </div>
     </div>

@@ -5,12 +5,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
 }
 .service-card-container{
     width: 85%;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-top: 50px;
 }
 .gold-card{
     width: 30%;

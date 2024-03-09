@@ -4,9 +4,16 @@ import {Link } from 'react-router-dom'
 const Service = () => {
   return (
       <section className='service-section'>
+          <div className="why-choose-us-text-container">
+            <div className="header" data-aos="fade-up">
+                <span className="header-line"></span>
+                <h2>Latest News</h2>
+            </div>
+            <h1 data-aos="fade-up">stay in the loop with the lastest news</h1>
+            <p data-aos="fade-up">Electrifying events organised by  Nigerian Institute for Biomedical Engineering</p>
+        </div>
           <div className="service-card-container">
               <div className="gold-card" data-aos="fade-up">
-              <img src="/pexels-michael-steinberg-321463.jpg" alt="" />
               <div className="gold-card-text">
                   <small>09/07/17</small>
                   <h3>gold stock investment</h3>
@@ -15,7 +22,6 @@ const Service = () => {
               </div>
               </div>
               <div className="gold-card" data-aos="fade-up">
-              <img src="/pexels-mathias-reding-7108780.jpg" alt="" />
               <div className="gold-card-text">
                   <small>01/09/16</small>
                   <h3>real estate and housing</h3>
@@ -24,7 +30,6 @@ const Service = () => {
               </div>
               </div>
               <div className="gold-card" data-aos="fade-up">
-              <img src="/Invest4Land-Agriculture-Real-Estate-Investment-Investing-Farmland-Farming-Agrobusiness-Investor-Property-Managed-Farmland-Turkey-Spain-Almond-Walnut0.jpg" alt="" />
               <div className="gold-card-text">
                   <small>03/03/17</small>
                   <h3>agro-tech investment</h3>
