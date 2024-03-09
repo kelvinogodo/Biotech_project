@@ -46,60 +46,52 @@ const Review = () => {
       >
         <SwiperSlide className='review-swiper-slide'>
           <div className="swiper-slide-content">
-            <img src="/blackInvestor.jpeg" alt="" className='review-img'/>
-            <small className="investor-name">
-              peter hathen
-            </small>
-            <small className='investor-title'>investor</small>
-            <ImQuotesLeft />
-              <p> wow! i couldn't believe what my eyes saw at first, but guess what...
-            it was real. I had never seen such a fast withdrawal process in any
-            investment platform, Kudos to Buterinnfend
-              </p>
-            <ImQuotesRight />
-          </div>
-        </SwiperSlide>
-        <SwiperSlide className='review-swiper-slide'>
-          <div className="swiper-slide-content">
-            <img src="/black2.jpg" alt="" className='review-img'/>
-            <small className="investor-name">
-              jack richard
-            </small>
-            <small className='investor-title'>investor</small>
-            <ImQuotesLeft />
-              <p>this platform is absolutely amazing, tested and trusted. the
-            custormer service is top nutch, investment plans are mind blowing, i
-            am down for this project.
-              </p>
-            <ImQuotesRight />
-          </div>
-        </SwiperSlide>
-        <SwiperSlide className='review-swiper-slide'>
-          <div className="swiper-slide-content">
-            <img src="/black3.jpg" alt="" className='review-img'/>
-            <small className="investor-name">
-              jermane kunt
-            </small>
-            <small className='investor-title'>investor</small>
-            <ImQuotesLeft />
-              <p>this is one of the best investment platform i've come accross so
-            far. As an investor, from a professional stand point, the
-            percentages are directly comparable with the investment range.
-              </p>
-            <ImQuotesRight />
-          </div>
-        </SwiperSlide>
-        <SwiperSlide className='review-swiper-slide'>
-          <div className="swiper-slide-content">
             <img src="/istockphoto-1133598770-170667a.jpg" alt="" className='review-img'/>
             <small className="investor-name">
-              michael johson
+              - James S.
             </small>
             <small className='investor-title'>investor</small>
             <ImQuotesLeft />
-              <p>for the first time, i could withdraw my investment proceeds
-            successfully. thanks to Bloxvest for creating a
-            platform like this.
+              <p>Passive Income Invest has been a game-changer for my financial portfolio. Their expert guidance in real estate, gold stocks, and agro-tech investments has consistently delivered impressive returns. I highly recommend their services for anyone looking to grow their wealth intelligently.
+              </p>
+            <ImQuotesRight />
+          </div>
+        </SwiperSlide>
+        <SwiperSlide className='review-swiper-slide'>
+          <div className="swiper-slide-content">
+            <img src="/istockphoto-1342247162-170667a.jpg" alt="" className='review-img'/>
+            <small className="investor-name">
+              - Michael W.
+            </small>
+            <small className='investor-title'>investor</small>
+            <ImQuotesLeft />
+              <p>I've found my ultimate investment partner in Passive Income Invest. Their diversified approach in real estate, gold stocks, and agro-tech has provided me with a reliable stream of passive income. Trustworthy, professional, and results-driven! 
+              </p>
+            <ImQuotesRight />
+          </div>
+        </SwiperSlide>
+        <SwiperSlide className='review-swiper-slide'>
+          <div className="swiper-slide-content">
+            <img src="/istockphoto-1322849492-170667a.jpg" alt="" className='review-img'/>
+            <small className="investor-name">
+              - Mark L.
+            </small>
+            <small className='investor-title'>investor</small>
+            <ImQuotesLeft />
+              <p>Passive Income Invest's real estate, gold stock, and agro-tech investment strategies have exceeded my expectations. I've seen my investments grow steadily, and their personalized approach to wealth management sets them apart from the rest.
+              </p>
+            <ImQuotesRight />
+          </div>
+        </SwiperSlide>
+        <SwiperSlide className='review-swiper-slide'>
+          <div className="swiper-slide-content">
+            <img src="photo-1624797432677-6f803a98acb3.jpg" alt="" className='review-img'/>
+            <small className="investor-name">
+              - David M.
+            </small>
+            <small className='investor-title'>investor</small>
+            <ImQuotesLeft />
+              <p>Thanks to Passive Income Invest, I've achieved financial stability and peace of mind. Their well-researched investment opportunities in real estate, gold stocks, and agro-tech have consistently yielded excellent results. Their team is knowledgeable, responsive, and genuinely cares about their clients' success. 
               </p>
             <ImQuotesRight />
           </div>

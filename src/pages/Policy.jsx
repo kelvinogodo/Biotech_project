@@ -6,7 +6,7 @@ import '../'
 import Contact from '../components/contact/Contact'
 const Policy = () => {
   return (
-    <main className='landpage'>
+    <main className='landpage gold-page'>
     <Header />
       <section className='about-landpage policy-lanpage'>
         <div className="about-page-text">

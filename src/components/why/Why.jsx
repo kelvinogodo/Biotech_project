@@ -1,7 +1,7 @@
 import React from 'react'
 import './why.css'
 import {BsShieldShaded} from 'react-icons/bs'
-import {FaServer} from 'react-icons/fa'
+import {SlChart} from 'react-icons/sl'
 import {GrStackOverflow} from 'react-icons/gr'
 const Why = () => {
   return (
@@ -16,17 +16,20 @@ const Why = () => {
         </div>
         <div className="why-choose-us-card-container">
             <div className="why-choose-us-card" data-aos="fade-up">
-                <img src="/man.png" alt="" />
+                <span className="card-counter">01</span>
+                <BsShieldShaded />
                 <h2>Ultra Fast & Secure</h2>
                 <p>we employ the use of latest reliable and sophisticated technology, to ensure strongly secured, fast and reliable transactions.</p>
             </div>
             <div className="why-choose-us-card" data-aos="fade-up">
-                <img src="/server.png" alt="" />
+                <span className="card-counter">02</span>
+                <SlChart />
                 <h2>Highly Scalable</h2>
                 <p>your investments are very much upgradeable at any point you want to. we provide our clients the ability to scale up their investments.</p>
             </div>
             <div className="why-choose-us-card" data-aos="fade-up">
-                <img src="/scale.png" alt="" />
+                <span className="card-counter">03</span>
+                <GrStackOverflow />
                 <h2>Reliable & Low Cost</h2>
                 <p>We use our advanced experience in arbitrage trading to minimize our clients cost of trade and unnecessary transaction expenses.</p>
             </div>

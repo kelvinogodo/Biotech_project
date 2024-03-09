@@ -20,9 +20,13 @@
     font-family: roboto;
     font-size: .9rem;
     width: 60%;
+    text-transform: lowercase;
 }
 .no-referral-page .click-to-copy-container{
-    width: 90%;
+    margin-bottom: 30px;
+}
+.click-to-copy-container{
+    width: 100%;
 }
 @media (max-width: 990px) and (min-width: 768px){
     .no-referral-page {

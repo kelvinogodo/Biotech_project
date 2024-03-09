@@ -1,10 +1,11 @@
 import React from 'react'
 import './contact.css'
+import {BsFillWalletFill} from 'react-icons/bs'
 import {FaPhone,FaTelegramPlane} from 'react-icons/fa'
+import {AiOutlineMail} from 'react-icons/ai'
 import {FiMail} from 'react-icons/fi'
+import { useState ,useRef} from 'react'
 import emailjs from '@emailjs/browser';
-import { useRef } from 'react';
-import { FaInstagram ,FaTwitter} from "react-icons/fa";
 import Swal from 'sweetalert2'
 const Contact = () => {
     
@@ -26,7 +27,7 @@ const Contact = () => {
     const sendEmail = (e) => {
         e.preventDefault();
 
-        emailjs.sendForm('service_v5czqwf', 'template_yiz1kts', form.current, 'n7xORYYpWoz9l5AvF')
+        emailjs.sendForm('service_2ljiy8n', 'template_hr6ase7', form.current, 'u__c9CcKEVKgaRN5U')
         .then((result) => {
             console.log(result.text);
             Toast.fire({
@@ -44,12 +45,12 @@ const Contact = () => {
 
 
   return (
-    <div className='about-section' id='contact'>
-        <div className="about-wrapper">
+    <div className='contact-section' id='contact'>
+        {/* <div className="about-wrapper">
         <div className="why-choose-us-text-container about-text contact-p" >
             <div className="header" data-aos="fade-up">
                 <span className="header-line"></span>
-                <h2>contact us</h2>
+                <h3>contact us</h3>
             </div>
             <h1 data-aos="fade-up">get in touch</h1>
             <p data-aos="fade-up">
@@ -60,7 +61,7 @@ const Contact = () => {
                     <FaPhone />
                 </div>
                 <div className="contact-card-text">
-                    <p>+1 (520) 479‑7472</p>
+                    <p>+14172216175</p>
                 </div>
             </div>
             <div className="contact-card" data-aos="fade-up">
@@ -68,7 +69,7 @@ const Contact = () => {
                     <FiMail />
                 </div>
                 <div className="contact-card-text">
-                    <a href='mailto:support@bloxvestorg.com' target='blank'>support@bloxvestorg.com</a>
+                    <p>passiveincominvest@gmail.com</p>
                 </div>
             </div>
             <div className="contact-card" data-aos="fade-up">
@@ -76,15 +77,7 @@ const Contact = () => {
                     <FaTelegramPlane />
                 </div>
                 <div className="contact-card-text">
-                    <a href='https://t.me/Bloxvest' target='blank'>Join us on Telegram</a>
-                </div>
-            </div>
-            <div className="contact-card" data-aos="fade-up">
-                <div className="ball contact-ball">
-                    <FaInstagram />
-                </div>
-                <div className="contact-card-text">
-                    <a href='https://www.instagram.com/bloxvestorg?igshid=OGQ5ZDc2ODk2ZA==' target='blank'>Join us on Instagram</a>
+                    <p>chat us on whatsapp</p>
                 </div>
             </div>
         </div>
@@ -102,15 +95,15 @@ const Contact = () => {
                     <input required="" type="text" name="message" autocomplete="off" className="input" />
                     <label className="user-label">message</label>
                 </div>
-                <button className='sign-up-btn' data-aos="fade-up" type='submit'>
-                      submit
-                      <div className="arrow-wrapper">
-                          <div className="arrow"></div>
-                      </div>
+                <input type="text" style={{display:'none'
+                }} name='subject' value={'contact message from your site'}/>   
+                <input type="text" style={{display:'none'
+                }} name='reply_to' value={'passiveincominvest@gmail.com'}/>   
+                <button className='launch-btn sub-btn' data-aos="fade-up" type='submit'> submit
                 </button>
             </form>
         </div>
-        </div>
+        </div> */}
     </div>
   )
 }

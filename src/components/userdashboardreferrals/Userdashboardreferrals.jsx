@@ -1,6 +1,6 @@
 import React, {useState,useEffect,useRef}from 'react'
 import { useNavigate } from 'react-router-dom'
-import {MdOutlineContentCopy} from 'react-icons/md'
+import {MdOutlineContentCopy,MdOutlineDone} from 'react-icons/md'
 import Userdashboardheader from '../userdashboardheader/Userdashboardheader'
 import './userdashboardreferrals.css'
 const Userdashboardreferrals = ({route}) => {
@@ -23,6 +23,11 @@ const Userdashboardreferrals = ({route}) => {
             })
             const res = await req.json()
             setUserData(res)
+
+           if (res.status === 'error') {
+                    navigate('/login')
+          }
+          
             setLoader(false)
         }
         getData()
@@ -38,22 +43,22 @@ const Userdashboardreferrals = ({route}) => {
         {
         loader && 
           <div className="wifi-loader-container">
-            <div id="wifi-loader">
-            <svg className="circle-outer" viewBox="0 0 86 86">
-                <circle className="back" cx="43" cy="43" r="40"></circle>
-                <circle className="front" cx="43" cy="43" r="40"></circle>
-                <circle className="new" cx="43" cy="43" r="40"></circle>
-            </svg>
-            <svg className="circle-middle" viewBox="0 0 60 60">
-                <circle className="back" cx="30" cy="30" r="27"></circle>
-                <circle className="front" cx="30" cy="30" r="27"></circle>
-            </svg>
-            <svg className="circle-inner" viewBox="0 0 34 34">
-                <circle className="back" cx="17" cy="17" r="14"></circle>
-                <circle className="front" cx="17" cy="17" r="14"></circle>
-            </svg>
-            <div className="text" data-text="login in..."></div>
-          </div>
+            <div class="loader">
+              <span class="l">p</span>
+              <span class="o">a</span>
+              <span class="a">s</span>
+              <span class="d">s</span>
+              <span class="i">i</span>
+              <span class="n">v</span>
+              <span class="g">e</span>
+              <span class="d1"> </span>
+              <span class="d2">I</span>
+              <span class="d3">n</span>
+              <span class="d4">c</span>
+              <span class="d5">o</span>
+              <span class="d6">m</span>
+              <span class="d7">e</span>
+            </div>
         </div>
       }
           {userData && userData.referred.length !== 0 ? 
@@ -71,18 +76,18 @@ const Userdashboardreferrals = ({route}) => {
                     <td>Lastname</td>
                     <td>Joined At</td>
                     <td>Email</td>
-                    <td>Bonus Earned</td>
+                    <td>commission Earned</td>
                   </tr>
                 </thead>
                 <tbody>
                   {
                     userData.referred.map(refer =>
                       <tr>
-                        <td>{refer.firstname}</td>
-                        <td>{refer.lastname}</td>
-                        <td>{refer.date}</td>
-                        <td>{refer.email}</td>
-                        <td>${refer.bonus} USD</td>
+                        <td>{refer.firstname ? `${refer.firstname}` : ' '}</td>
+                        <td>{refer.lastname ? `${refer.lastname}` : ' '}</td>
+                        <td>{refer.date ? `${refer.date}` : ' '}</td>
+                        <td>{refer.email ? `${refer.email}` : ''}</td>
+                        <td>{refer.refBonus ? `$${refer.refBonus}` : '$0'} USD</td>
                       </tr>
                     )
                   }
@@ -93,22 +98,20 @@ const Userdashboardreferrals = ({route}) => {
           :
           <div className="page-swiper-wrapper">
           <div className="failure-page no-referral-page">
-
-            <img src="/ref.png" alt="" className='failure-img'/>
-            <p>You haven't referred any user yet, click below to copy your referral link</p>
+            <img src="/eadb74787dda41cc6333341e55293432.gif" alt="" className='failure-img'/>
+            <p>You haven't referred any user yet, click below to copy your referral link to earn 10% of any deposit made by user</p>
             <div className="click-to-copy-container">
-                <input type="text" value='ac4d43bccf48793e5efc70d5fb1afb42eeca6622bbdb220fb62b63b66ff00f0a' ref={clipRef}/>
-                <button className={`clipboard-btn ${clipBoard ? 'copied' : ''}` } onClick={()=>{
+                <input type="text" value={`passiveincomeinvest.org/user/${userData && userData.username}`} ref={clipRef}/>
+                <span className={`clipboard-btn ${clipBoard ? <MdOutlineDone /> : ''}` } onClick={()=>{
                     copy()
                     setClipBoard(!clipBoard)
                 }}>
                     {
                         clipBoard ?
-                        'copied!' : <MdOutlineContentCopy />
+                        <MdOutlineDone /> : <MdOutlineContentCopy />
                     }
-                </button>
+                </span>
             </div>
-            
           </div>
           </div>
           }

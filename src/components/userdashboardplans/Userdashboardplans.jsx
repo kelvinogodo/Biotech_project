@@ -1,6 +1,7 @@
 import React , {useState} from 'react'
 import Userdashboardheader from '../userdashboardheader/Userdashboardheader'
-import { FiArrowRight } from 'react-icons/fi'
+import {FiArrowRight} from 'react-icons/fi'
+import Checkout from '../Checkout';
 import {MdClose} from 'react-icons/md'
 import { motion,AnimatePresence } from 'framer-motion'
 import Swal from 'sweetalert2';
@@ -26,61 +27,67 @@ const Userdashboardplans = ({route}) => {
 
   const [withdrawMethods,setWithdrawalMethods] = useState([
     {
-      id:1,
-      min:300,
-      max:4999,
-      image:'/btc.png',
-      method:'BTC',
-      type:'basic plan',
-      percent:'8%'
-    },
-    {
-      id:2,
-      min:5000,
-      max:9999,
-      image:'/bnb.png',
-      method:'USDT',
-      type:'mega plan',
-      percent:'10%'
-    },
-    {
-      id:3,
-      min:10000,
-      max:29999,
-      image:'/tron.png',
-      method:'tether(TRC20)',
-      type:'ultra plan',
-      percent:'16%'
-    },
-    {
-      id:4,
-      min:30000,
-      max:59999,
-      image:'/tron.png',
-      method:'tether(TRC20)',
-      type:'vip plan',
-      percent:'24%'
-    },
-    {
-      id:5,
-      min:60000,
-      max:99999,
-      image:'/tron.png',
-      method:'tether(TRC20)',
-      type:'premium plan',
-      percent:'30%'
-    },
-    {
-      id:6,
-      min:100000,
-      max:500000,
-      image:'/tron.png',
-      method:'tether(TRC20)',
-      type:'ultimate plan',
-      percent:'50%'
-    },
+        id:1,
+        min:100,
+        max:2000,
+        image:'/btc.png',
+        method:'BTC',
+        type:'basic plan',
+        percent:'5%',
+        duration:'3 days'
+      },
+      {
+        id:2,
+        min:2001,
+        max:5000,
+        image:'/bnb.png',
+        method:'USDT',
+        type:'forex/crypto plan',
+        percent:'7%',
+        duration:'4 days'
+      },
+      {
+        id:3,
+        min:5001,
+        max:15000,
+        image:'/tron.png',
+        method:'tether(TRC20)',
+        type:'agro-tech plan',
+        percent:'9%',
+        duration:'7 days'
+      },
+      {
+        id:4,
+        min:15001,
+        max:30000,
+        image:'/tron.png',
+        method:'tether(TRC20)',
+        type:'gold-stock plan',
+        percent:'11%',
+        duration:'8 days'
+      },
+      {
+        id:5,
+        min:30001,
+        max:100000,
+        image:'/tron.png',
+        method:'tether(TRC20)',
+        type:'oil and gas plan',
+        percent:'15%',
+        duration:'10 days'
+      },
+      {
+        id:6,
+        min:100001,
+        max:1000000,
+        image:'/tron.png',
+        method:'tether(TRC20)',
+        type:'real estate plan',
+        percent:'18%',
+        duration:'12 days'
+      },
   ])
-
+  
 
    // sweet alert function 
 
@@ -111,7 +118,8 @@ const Userdashboardplans = ({route}) => {
           percent:activeMethod.percent,
           min:parseInt(activeMethod.min),
           max:parseInt(activeMethod.max),
-          plan:activeMethod.plan
+          plan:activeMethod.plan,
+          duration:activeMethod.duration
         })
       })
       const res = await req.json()
@@ -149,21 +157,21 @@ const Userdashboardplans = ({route}) => {
       {
           loader && 
             <div className="wifi-loader-container">
-              <div id="wifi-loader">
-              <svg className="circle-outer" viewBox="0 0 86 86">
-                  <circle className="back" cx="43" cy="43" r="40"></circle>
-                  <circle className="front" cx="43" cy="43" r="40"></circle>
-                  <circle className="new" cx="43" cy="43" r="40"></circle>
-              </svg>
-              <svg className="circle-middle" viewBox="0 0 60 60">
-                  <circle className="back" cx="30" cy="30" r="27"></circle>
-                  <circle className="front" cx="30" cy="30" r="27"></circle>
-              </svg>
-              <svg className="circle-inner" viewBox="0 0 34 34">
-                  <circle className="back" cx="17" cy="17" r="14"></circle>
-                  <circle className="front" cx="17" cy="17" r="14"></circle>
-              </svg>
-              <div className="text" data-text="login in..."></div>
+              <div class="loader">
+              <span class="l">p</span>
+              <span class="o">a</span>
+              <span class="a">s</span>
+              <span class="d">s</span>
+              <span class="i">i</span>
+              <span class="n">v</span>
+              <span class="g">e</span>
+              <span class="d1"> </span>
+              <span class="d2">I</span>
+              <span class="d2">n</span>
+              <span class="d2">c</span>
+              <span class="d2">o</span>
+              <span class="d2">m</span>
+              <span class="d2">e</span>
             </div>
           </div>
         }
@@ -186,7 +194,7 @@ const Userdashboardplans = ({route}) => {
               <MdClose className='close-modal-btn' onClick={()=>{setShowModal(false)}}/>
                 <div className="modal-input-container">
                   <div className="modal-input">
-                    <input type="text" placeholder='0.00' onChange={(e)=>{
+                    <input type="tel" placeholder='0.00' onChange={(e)=>{
                         setAmount(parseInt(e.target.value))
                     }}/>
                     <span>USD</span>
@@ -258,11 +266,11 @@ const Userdashboardplans = ({route}) => {
                     <div className="plan-card-headerdiv">
                       <span className="small-plan-head">
                         <h3>{withdrawmethod.percent}</h3>
-                        <p>weekly</p>
+                        <p>everyday</p>
                       </span>
                       <span className="small-plan-head">
-                        <h3>pay</h3>
-                        <p>off</p>
+                              <h3>{ withdrawmethod.duration}</h3>
+                        <p>duration</p>
                       </span>
                     </div>
                   </div>
@@ -283,9 +291,14 @@ const Userdashboardplans = ({route}) => {
                         <p>{withdrawmethod.percent}</p>
                       </div>
                       <div className="investrange-card invest-card">
-                        <p>total return</p>
+                        <p>referral bonus</p>
                         <RxDash />
-                        <p> {withdrawmethod.percent}</p>
+                        <p> 10%</p>
+                      </div>
+                      <div className="investrange-card invest-card">
+                          <p>duration</p> 
+                          <RxDash />
+                          <p>{withdrawmethod.duration}</p>
                       </div>
                     </div>
                     <button className="deposit-btn" onClick={()=>{
@@ -298,6 +311,7 @@ const Userdashboardplans = ({route}) => {
                         type:`${withdrawmethod.type}`,
                         percent:`${withdrawmethod.percent}`,
                         plan:`${withdrawmethod.type}`,
+                        duration:`${withdrawmethod.duration}`
                       })
                       setShowModal(true)
                     }}>choose plan</button>
@@ -307,9 +321,9 @@ const Userdashboardplans = ({route}) => {
             </div>
             <div className="swiper-container mobile-swiper-container">
                 <Swiper
-                  pagination={{
-                    type: "fraction",
-                  }}
+                  // pagination={{
+                  //   type: "fraction",
+                  // }}
                   navigation={true}
                   spaceBetween={30}
                   modules={[Pagination, Navigation]}
@@ -323,11 +337,11 @@ const Userdashboardplans = ({route}) => {
                     <div className="plan-card-headerdiv">
                       <span className="small-plan-head">
                         <h3>{withdrawmethod.percent}</h3>
-                        <p>weely</p>
+                        <p>everyday</p>
                       </span>
                       <span className="small-plan-head">
-                        <h3>pay</h3>
-                        <p>off</p>
+                              <h3>{withdrawmethod.duration}</h3>
+                        <p>duration</p>
                       </span>
                     </div>
                   </div>
@@ -363,6 +377,7 @@ const Userdashboardplans = ({route}) => {
                         type:`${withdrawmethod.type}`,
                         percent:`${withdrawmethod.percent}`,
                         plan:`${withdrawmethod.type}`,
+                        duration:`${withdrawmethod.duration}`
                       })
                       setShowModal(true)
                     }}>choose plan</button>
@@ -373,7 +388,7 @@ const Userdashboardplans = ({route}) => {
             <button className="history-btn" onClick={()=>{
               navigate('/investments')
             }}>
-              investment history
+              withdrawal history
               <FiArrowRight />
             </button>
         </div>

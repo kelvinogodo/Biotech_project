@@ -6,11 +6,11 @@ import Contact from '../components/contact/Contact'
 
 const Buybitcoin = () => {
   return (
-    <main className='landpage'>
+    <main className='landpage gold-page'>
     <Header />
       <section className='about-landpage bitcoin-lanpage'>
         <div className="about-page-text">
-          <h3>want to buy butcoin</h3>
+          <h3>want to buy bitcoin?</h3>
           <span className="small-thin-line"></span>
         </div>
       </section>
@@ -18,10 +18,10 @@ const Buybitcoin = () => {
         <div className="why-choose-us-text-container">
             <div className="header" data-aos="fade-up">
                 <span className="header-line"></span>
-                <h2>why choose us</h2>
+                <h2>where to buy</h2>
             </div>
-            <h1 data-aos="fade-up">best qualities</h1>
-            <p data-aos="fade-up">Our Team combines a passion for esports, industry experise & proven record in finance, development, marketing.</p>
+            <h1 data-aos="fade-up">best cryptocurrencies</h1>
+            <p data-aos="fade-up">Below is a list of the best crypto currency companies that has been tested and trusted, where you can securely buy Bitcoin and other crypto currencies.</p>
         </div>
         <div className="bitcoin-card flipped" data-aos="fade-up">
           <div className="bitcoin-card-text-container">

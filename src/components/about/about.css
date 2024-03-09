@@ -9,12 +9,14 @@
 }
 .about-img-container{
     width: 45%;
+    height: 100%;
     position: relative;
+    align-self: flex-start;
 }
-.about-img-container img{
+.about-img-container video{
     width: 100%;
     object-fit: contain;
-    height: 450px;
+    height: 100%;
 }
 
 .about-text{
@@ -59,15 +61,11 @@
     }
     .about-img-container{
         width: 100%;
+        padding-top: 10px;
+        height: auto;
     }
-    .floating-about-img-container{
-        position: static;
-        margin: 15px 0px 20px 0px;
-    }
-    .floating-about-img-container2{
-        position: static;
-    }
-    .about-img{
-        object-fit: cover;
-    }
+   .about-img{
+    height: 100%;
+    object-fit: fill;
+   }
 }

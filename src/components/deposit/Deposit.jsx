@@ -3,7 +3,7 @@ import { useState,useEffect } from 'react'
 import { useNavigate,Link } from 'react-router-dom'
 import Userdashboardheader from '../userdashboardheader/Userdashboardheader'
 import {AiOutlineArrowLeft} from 'react-icons/ai'
-const Deposit = () => {
+const Deposit = ({route}) => {
     const navigate = useNavigate()
     const [userData, setUserData] = useState()
     const [loader,setLoader] = useState(false)
@@ -11,7 +11,7 @@ const Deposit = () => {
       setLoader(true)
       if(localStorage.getItem('token')){
           const getData = async()=>{
-              const req = await fetch('/api/getData',{
+              const req = await fetch(`${route}/api/getData`,{
                   headers: {
                   'x-access-token': localStorage.getItem('token')
                   }
@@ -29,26 +29,21 @@ const Deposit = () => {
   return (
     <div>
       
-    <Userdashboardheader />
+    <Userdashboardheader route={route}/>
     {
         loader && 
           <div className="wifi-loader-container">
-            <div id="wifi-loader">
-            <svg className="circle-outer" viewBox="0 0 86 86">
-                <circle className="back" cx="43" cy="43" r="40"></circle>
-                <circle className="front" cx="43" cy="43" r="40"></circle>
-                <circle className="new" cx="43" cy="43" r="40"></circle>
-            </svg>
-            <svg className="circle-middle" viewBox="0 0 60 60">
-                <circle className="back" cx="30" cy="30" r="27"></circle>
-                <circle className="front" cx="30" cy="30" r="27"></circle>
-            </svg>
-            <svg className="circle-inner" viewBox="0 0 34 34">
-                <circle className="back" cx="17" cy="17" r="14"></circle>
-                <circle className="front" cx="17" cy="17" r="14"></circle>
-            </svg>
-            <div className="text" data-text="login in..."></div>
-          </div>
+            <div class="loader">
+              <span class="l">L</span>
+              <span class="o">o</span>
+              <span class="a">a</span>
+              <span class="d">d</span>
+              <span class="i">i</span>
+              <span class="n">n</span>
+              <span class="g">g</span>
+              <span class="d1">.</span>
+              <span class="d2">.</span>
+            </div>
         </div>
       }
       {userData && userData.deposit.length !== 0 && userData.deposit !== [] ? 
@@ -67,7 +62,7 @@ const Deposit = () => {
         <table>
             <thead>
               <tr>
-                <td>Id</td>
+                <td>transaction Id</td>
                 <td>type</td>
                 <td>amount</td>
                 <td>date</td>
@@ -93,7 +88,7 @@ const Deposit = () => {
       :
       <div className="page-swiper-wrapper">
       <div className="failure-page no-referral-page">
-        <img src="/preview.gif" alt="" className='failure-img'/>
+        <img src="/unold_icon1_animation_loop_f.gif" alt="" className='failure-img'/>
         <p>You have not performed any transaction yet. click below to deposit and start transacting.</p>
         <Link to='/fundwallet'>deposit</Link>
       </div>

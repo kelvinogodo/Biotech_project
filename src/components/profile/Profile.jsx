@@ -5,7 +5,7 @@ import Userdashboardheader from '../userdashboardheader/Userdashboardheader'
 import {BsImage} from 'react-icons/bs'
 import {RxUpload} from 'react-icons/rx'
 import Swal from 'sweetalert2'
-const Profile = () => {
+const Profile = ({route}) => {
   const [country,setCountry] = useState()
   const [zipCode,setZipCode] = useState()
   const [state,setState] = useState()
@@ -14,11 +14,23 @@ const Profile = () => {
   const navigate = useNavigate()
   const [userData, setUserData] = useState()
 
+  const Toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.addEventListener('mouseenter', Swal.stopTimer)
+      toast.addEventListener('mouseleave', Swal.resumeTimer)
+    }
+  })
+
   const firstnameRef = useRef(userData ? userData.firstname : null)
   useEffect(()=>{
     if(localStorage.getItem('token')){
         const getData = async()=>{
-            const req = await fetch('http://localhost:5000/api/getData',{
+            const req = await fetch(`${route}/api/getData`,{
                 headers: {
                 'x-access-token': localStorage.getItem('token')
                 }
@@ -57,7 +69,7 @@ const Profile = () => {
   // update user info function 
 
   const updateUserData = async()=>{
-      const req = await fetch('http://localhost:5000/api/updateUserData',{
+      const req = await fetch(`${route}/api/updateUserData`,{
         method:'POST',
         headers:{
           'Content-Type':'application/json',
@@ -74,27 +86,21 @@ const Profile = () => {
       })
       const res = await req.json()
       if(res.status === 200){
-        Swal.fire({
-          title: 'Success',
-          text: 'login successful! ',
+        Toast.fire({
           icon: 'success',
-          confirmButtonText: 'OK'
+          title:  `profile successfully updated`
         })
       }
       else if(res.status === 400){
-        Swal.fire({
-          title: 'warning',
-          text: 'no changes were made',
+        Toast.fire({
           icon: 'warning',
-          confirmButtonText: 'retry'
+          title:  `no changes were made`
         })
       }
       else{
-        Swal.fire({
-          title: 'error',
-          text: 'interna server error',
-          icon: 'error',
-          confirmButtonText: 'retry'
+        Toast.fire({
+          icon: 'warning',
+          title:  `internal server error`
         })
       }
   }
@@ -112,7 +118,7 @@ const Profile = () => {
 
   return (
     <div>
-        <Userdashboardheader />
+        <Userdashboardheader route={route}/>
         <div className="profile-page">
           <div className="page-header"> 
               <h2>Profile Settings</h2>

@@ -1,11 +1,10 @@
 footer{
-  background-color: transparent;
+  background-color: var(--secondary-color);
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    height: 60vh;
     background-position: bottom;
     overflow-y: hidden;
   }
@@ -13,10 +12,11 @@ footer{
     width: 85%;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     flex-wrap: wrap;
     flex-direction: column;
     padding-top: 60px;
+    height: auto;
   }
   .trusted-patners-section h2{
     color: var(--primary-color);
@@ -25,8 +25,12 @@ footer{
     font-weight: 500;
     margin-bottom: 20px;
   }
+ 
   .trusted-patners-img-container{
     width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
   .trusted-patener-icon{
     width: 170px;
@@ -85,8 +89,12 @@ footer{
     .footer{
       height: auto;
     }
+    .quick-link-logo-container{
+      display: none;
+    }
     .trusted-patners-img-container{
       width: 100%;
+      flex-wrap: wrap;
     }
     .trusted-patener-icon{
       width: 45%;

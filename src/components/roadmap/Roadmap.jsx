@@ -22,7 +22,7 @@ const Roadmap = () => {
             "Easy Registration Steps"],
             active:true,
             icon:FiLogIn,
-            bg:'Welcome-to-scribie-512x391.svg'
+            bg:'Best_Gold_Stocks.svg'
         },
         {
             id:2,
@@ -38,7 +38,7 @@ const Roadmap = () => {
             "Easy Registration Steps"],
             active:false,
             icon:CiWallet,
-            bg:'pngtree-stock-market-trading-in-flat-design-png-image_6847815.png'
+            bg:'Welcome-to-scribie-512x391.svg'
         },
         {
             id:3,
@@ -54,7 +54,7 @@ const Roadmap = () => {
             "Easy Registration Steps"],
             active:false,
             icon:AiOutlineSchedule,
-            bg:'Investment Plan.svg'
+            bg:'pngtree-stock-market-trading-in-flat-design-png-image_6847815.png'
         },
         {
             id:4,
@@ -69,7 +69,7 @@ const Roadmap = () => {
             "investment completion alert"],
             active:false,
             icon:RiStockLine,
-            bg:'Best_Gold_Stocks.svg'
+            bg:'Investment Plan.svg'
         },
         {
             id:5,
@@ -111,7 +111,7 @@ const Roadmap = () => {
                     tabs.map(tab =>
                         <li className={`icon facebook ${tab.active === true ? 'my-active-tab' : ''}`} onClick={()=>{changeContent(tab.id)}}>
                             <span className="tooltip" key={tab.id} >{tab.title}</span>
-                            <span><tab.icon /></span>
+                            <tab.icon />
                         </li>
                     )
                 }
@@ -122,7 +122,7 @@ const Roadmap = () => {
                 {
                     tabs.map(tab => tab.active === true &&
                         <>
-                        <motion.div className="tab-text" >
+                        <motion.div className="tab-text" layout>
                             <h2>
                                 {tab.header}
                             </h2>

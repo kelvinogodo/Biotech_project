@@ -1,5 +1,12 @@
+.contact-section{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 50px 0px 20px 0px;
+}
 #contact{
-    background-color: transparent;
+    background-color: var(--secondary-color);
+    width: 100%;
 }
 .contact-card{
     margin: 10px 0px;
@@ -9,6 +16,9 @@
     width: 90%;
     height: 40px;
     padding: 0px ;
+}
+.contact-ball svg{
+    margin: auto;
 }
 .contact-ball{
     width: 40px;
@@ -42,10 +52,6 @@
 .contact-p p{
     color: #b7b7b7;
 }
-.contact-card-text a{
-    color: #b7b7b7;
-    width: 95%;
-}
 .contact-form{
     width: 90%;
 }
@@ -56,12 +62,17 @@ align-items: center;
 justify-content: center;
 align-self: flex-start;
 }
+
 @media screen and (max-width: 767px){
     .contact-form-container{
         width: 100% !important;
+        margin-bottom: 0px;
         padding: 0px;
     }
     .contact-form{
         width: 100%;
+    }
+    .contact-section{
+        padding-bottom: 0px;
     }
 }

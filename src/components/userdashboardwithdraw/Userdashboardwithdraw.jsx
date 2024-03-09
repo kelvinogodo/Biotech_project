@@ -15,10 +15,35 @@ import "swiper/css/navigation";
 import "swiper/css/free-mode";
 import { motion,AnimatePresence } from 'framer-motion'
 // import { Pagination, Navigation ,FreeMode} from "swiper";
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 const Userdashboardwithdraw = ({route}) => {
-  const navigate= useNavigate()
+  const [loader,setLoader] = useState(false)
+  const navigate = useNavigate()
+  const [userData, setUserData] = useState()
+  useEffect(()=>{
+    setLoader(true)
+    if(localStorage.getItem('token')){
+        const getData = async()=>{
+            const req = await fetch(`${route}/api/getData`,{
+                headers: {
+                'x-access-token': localStorage.getItem('token')
+                }
+            })
+            const res = await req.json()
+          setUserData(res)
+           if (res.status === 'error') {
+                    navigate('/login')
+                }
+            setLoader(false)
+        }
+        getData()
+    }
+    else{
+        navigate('/login')
+    }
+      
+},[])
   const [showModal,setShowModal] =useState(false)
   const [activeMethod, setActiveMethod] = useState()
   const [checkoutPage,setCheckoutPage] = useState(false)
@@ -26,24 +51,24 @@ const Userdashboardwithdraw = ({route}) => {
   const [withdrawMethods,setWithdrawalMethods] = useState([
     {
       id:1,
-      min:100,
-      max:1000,
+      min:10,
+      max:1000000,
       image:'/btc.png',
       method:'BTC',
     },
     {
       id:2,
-      min:100,
-      max:1000,
+      min:10,
+      max:1000000,
       image:'/etherium.png',
       method:'ETH',
     },
     {
       id:3,
-      min:100,
-      max:1000,
-      image:'/bnb.png',
-      method:'BNB (bep20)',
+      min:10,
+      max:1000000,
+      image:'/tron.png',
+      method:'tether(TRC20)',
     },
   ])
 
@@ -67,7 +92,27 @@ const Userdashboardwithdraw = ({route}) => {
     
   return (
     <>
-
+      {
+        loader && 
+          <div className="wifi-loader-container">
+            <div class="loader">
+              <span class="l">p</span>
+              <span class="o">a</span>
+              <span class="a">s</span>
+              <span class="d">s</span>
+              <span class="i">i</span>
+              <span class="n">v</span>
+              <span class="g">e</span>
+              <span class="d1"> </span>
+              <span class="d2">I</span>
+              <span class="d3">n</span>
+              <span class="d4">c</span>
+              <span class="d5">o</span>
+              <span class="d6">m</span>
+              <span class="d7">e</span>
+            </div>
+        </div>
+      }
     {
       !checkoutPage &&
       <div>
@@ -90,7 +135,7 @@ const Userdashboardwithdraw = ({route}) => {
               <MdClose className='close-modal-btn' onClick={()=>{setShowModal(false)}}/>
                 <div className="modal-input-container">
                   <div className="modal-input">
-                    <input type="text" placeholder='0.00' onChange={(e)=>{
+                    <input type="tel" placeholder='0.00' onChange={(e)=>{
                       setWithdrawAmount(parseInt(e.target.value))
                     }}/>
                     <span>USD</span>
@@ -182,9 +227,6 @@ const Userdashboardwithdraw = ({route}) => {
               </div>
               <div className="swiper-container mobile-swiper-container">
                 <Swiper
-                   pagination={{
-                    type: "fraction",
-                  }}
                   navigation={true}
                   spaceBetween={30}
                   modules={[Pagination, Navigation]}
@@ -232,7 +274,7 @@ const Userdashboardwithdraw = ({route}) => {
       </div>}
       {
         checkoutPage &&
-        <WithdrawReview Active={activeMethod} withdrawAmount={withdrawAmount} closepage={close} route={route} />
+        <WithdrawReview Active={activeMethod} withdrawAmount={withdrawAmount} closepage={close} route={route} funded={userData.funded}/>
       }
     </>
   )

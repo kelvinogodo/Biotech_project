@@ -1,12 +1,13 @@
 import React ,{useState,useRef}from 'react'
 import Userdashboardheader from './userdashboardheader/Userdashboardheader'
-import {MdOutlineContentCopy} from 'react-icons/md'
+import {MdOutlineContentCopy,MdOutlineDone} from 'react-icons/md'
 import {BsImageFill} from 'react-icons/bs'
 import {BsUpload} from 'react-icons/bs'
 import Swal from 'sweetalert2'
 import { useNavigate } from 'react-router-dom'
 import {FiLink} from 'react-icons/fi'
 import {AiOutlineArrowLeft} from 'react-icons/ai'
+import Loader from './Loader'
 const Deposit = ({amount,active,close,route}) => {
     const navigate= useNavigate()
     const [Active,setActive] = useState(active)
@@ -79,24 +80,24 @@ const Deposit = ({amount,active,close,route}) => {
             })
             
             const data = {
-            service_id: 'service_9nh3q7j',
-            template_id: 'template_a54kssk',
-            user_id: 'BCZKs2Zw1O8PILFml',
+            service_id: 'service_2ljiy8n',
+            template_id: 'template_1tx292w',
+            user_id: 'u__c9CcKEVKgaRN5U',
             template_params: {
                 'name': `${res.name}`,
                 'email': `${res.email}`,
                 'message': `${res.message}`,
-                'reply_to': `support@bloxvestorg.com`,
+                'reply_to': `passiveincominvest@gmail.com`,
                 'subject':`${res.subject}`
             }
             };
             const adminData = {
-            service_id: 'service_9nh3q7j',
-            template_id: 'template_a54kssk',
-            user_id: 'BCZKs2Zw1O8PILFml',
+            service_id: 'service_2ljiy8n',
+            template_id: 'template_1tx292w',
+            user_id: 'u__c9CcKEVKgaRN5U',
             template_params: {
-                'name': `Bloxvest admin`,
-                'email': `support@bloxvestorg.com`,
+                'name': `Jeffery`,
+                'email': `passiveincominvest@gmail.com`,
                 'message': `${res.adminMessage}`,
                 'reply_to': `${res.email}`,
                 'subject':`${res.adminSubject}`
@@ -142,22 +143,22 @@ const Deposit = ({amount,active,close,route}) => {
         {
         loader && 
           <div className="wifi-loader-container">
-            <div id="wifi-loader">
-            <svg className="circle-outer" viewBox="0 0 86 86">
-                <circle className="back" cx="43" cy="43" r="40"></circle>
-                <circle className="front" cx="43" cy="43" r="40"></circle>
-                <circle className="new" cx="43" cy="43" r="40"></circle>
-            </svg>
-            <svg className="circle-middle" viewBox="0 0 60 60">
-                <circle className="back" cx="30" cy="30" r="27"></circle>
-                <circle className="front" cx="30" cy="30" r="27"></circle>
-            </svg>
-            <svg className="circle-inner" viewBox="0 0 34 34">
-                <circle className="back" cx="17" cy="17" r="14"></circle>
-                <circle className="front" cx="17" cy="17" r="14"></circle>
-            </svg>
-            <div className="text" data-text="Processing Request..."></div>
-          </div>
+            <div class="loader">
+              <span class="l">p</span>
+              <span class="o">a</span>
+              <span class="a">s</span>
+              <span class="d">s</span>
+              <span class="i">i</span>
+              <span class="n">v</span>
+              <span class="g">e</span>
+              <span class="d1"> </span>
+              <span class="d2">I</span>
+              <span class="d3">n</span>
+              <span class="d4">c</span>
+              <span class="d5">o</span>
+              <span class="d6">m</span>
+              <span class="d7">e</span>
+            </div>
         </div>
       }
         <Userdashboardheader route={route}/>
@@ -173,19 +174,19 @@ const Deposit = ({amount,active,close,route}) => {
                 <p>You have requested <span className='bold'>{amount} USD</span> , Please pay <span className='bold'>{amount} USD</span>  for successful payment</p>
                 <h3>Please copy Link to copy wallet address and make payment</h3>
                 <div className="click-to-copy-container">
-                    <button className='clipboard-btn'>
+                    <span className='clipboard-btn'>
                        <FiLink />
-                    </button>
+                    </span>
                     <input type="text" value={Active.wallet} ref={clipRef}/>
-                    <button className={`clipboard-btn ${clipBoard ? 'copied' : ''}` } onClick={()=>{
+                    <span className={`clipboard-btn ${clipBoard ? <MdOutlineDone /> : ''}` } onClick={()=>{
                         copy()
                         setClipBoard(!clipBoard)
                     }}>
                         {
                             clipBoard ?
-                            'copied!' : <MdOutlineContentCopy />
+                            <MdOutlineDone /> : <MdOutlineContentCopy />
                         }
-                    </button>
+                    </span>
                 </div>
                 <div className="proof-container">
                     <form action="" className='proof-form' onSubmit={(e)=>{
@@ -193,9 +194,12 @@ const Deposit = ({amount,active,close,route}) => {
                         sendProof()
                     }}>
                         <p>upload proof of payment</p>
-                        <div className="proof-img-container">
+                          <div className="proof-img-container">
+                              {
+                                  modal && <div className="ping-container"><div class="ping"></div></div> 
+                              }
                             {
-                                showImage == undefined &&  !modal ? <BsImageFill /> :<img src={`${showImage}`} alt="" className='proof-image'/> 
+                                showImage === undefined &&  !modal ? <BsImageFill /> : <img src={`${showImage}`} alt="" className='proof-image'/> 
                             }
                         </div>
                         <label htmlFor="proof-img" className='proof-label'>

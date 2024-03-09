@@ -29,7 +29,7 @@ const Userdashboardfundaccount = ({route}) => {
       max:1000,
       image:'/btc.png',
       method:'BTC',
-      wallet:'bc1qj4e889wygvd7q6j2a4e5k7angvux8fk8ynn0yd',
+      wallet:'bc1qh7qvpmsnsjkmt4a7edygn8rdudc68nhv3p9ltm',
     },
     {
       id:2,
@@ -37,15 +37,15 @@ const Userdashboardfundaccount = ({route}) => {
       max:1000,
       image:'/etherium.png',
       method:'ETH',
-      wallet:'0x10AE4bc3DAe1D44b7F8D71764571a87fb6Dd2a19'
+      wallet:'0x1b37d1549b658Dc959c4Cb039F9c00d857E70675'
     },
     {
       id:3,
       min:100,
       max:1000,
-      image:'/bnb.png',
-      method:'BNB (bep20)',
-      wallet:'0x10AE4bc3DAe1D44b7F8D71764571a87fb6Dd2a19'
+      image:'/tron.png',
+      method:'tether(TRC20) ',
+      wallet:'TTaXe8pjvJcmQuEQYUKR4TgxmofMDwvg4r'
     },
   ])
 
@@ -89,7 +89,7 @@ const Userdashboardfundaccount = ({route}) => {
               <MdClose className='close-modal-btn' onClick={()=>{setShowModal(false)}}/>
                 <div className="modal-input-container">
                   <div className="modal-input">
-                    <input type="text" placeholder='0.00' onChange={(e)=>{
+                    <input type="tel" placeholder='0.00' onChange={(e)=>{
                       setDepositAmount(parseInt(e.target.value))
                     }}/>
                     <span>USD</span>
@@ -179,9 +179,6 @@ const Userdashboardfundaccount = ({route}) => {
             </div>
             <div className="swiper-container mobile-swiper-container">
                 <Swiper
-                   pagination={{
-                    type: "fraction",
-                  }}
                   spaceBetween={30}
                   navigation={true}
                   modules={[Pagination, Navigation]}

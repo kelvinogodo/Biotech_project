@@ -19,7 +19,10 @@ const Userdashboardtransactions = ({route}) => {
                 }
             })
             const res = await req.json()
-            setUserData(res)
+          setUserData(res)
+           if (res.status === 'error') {
+                    navigate('/login')
+                }
             setLoader(false)
         }
         getData()
@@ -37,22 +40,17 @@ const Userdashboardtransactions = ({route}) => {
     {
         loader && 
           <div className="wifi-loader-container">
-            <div id="wifi-loader">
-            <svg className="circle-outer" viewBox="0 0 86 86">
-                <circle className="back" cx="43" cy="43" r="40"></circle>
-                <circle className="front" cx="43" cy="43" r="40"></circle>
-                <circle className="new" cx="43" cy="43" r="40"></circle>
-            </svg>
-            <svg className="circle-middle" viewBox="0 0 60 60">
-                <circle className="back" cx="30" cy="30" r="27"></circle>
-                <circle className="front" cx="30" cy="30" r="27"></circle>
-            </svg>
-            <svg className="circle-inner" viewBox="0 0 34 34">
-                <circle className="back" cx="17" cy="17" r="14"></circle>
-                <circle className="front" cx="17" cy="17" r="14"></circle>
-            </svg>
-            <div className="text" data-text="login in..."></div>
-          </div>
+            <div class="loader">
+              <span class="l">L</span>
+              <span class="o">o</span>
+              <span class="a">a</span>
+              <span class="d">d</span>
+              <span class="i">i</span>
+              <span class="n">n</span>
+              <span class="g">g</span>
+              <span class="d1">.</span>
+              <span class="d2">.</span>
+            </div>
         </div>
       }
       {userData && userData.transaction.length !== 0 ? 
@@ -71,7 +69,7 @@ const Userdashboardtransactions = ({route}) => {
         <table>
             <thead>
               <tr>
-                <td>Id</td>
+                <td>transaction Id</td>
                 <td>type</td>
                 <td>amount</td>
                 <td>date</td>
@@ -97,8 +95,8 @@ const Userdashboardtransactions = ({route}) => {
       :
       <div className="page-swiper-wrapper">
       <div className="failure-page no-referral-page">
-        <img src="/preview.gif" alt="" className='failure-img'/>
-        <p>You have not performed any transaction yet. click below to deposit and start transacting.</p>
+        <img src="/Data_PortabilityPrivacy_BANNER_003.gif" alt="" className='failure-img'/>
+        <p>you have not performed any transaction yet</p> 
         <Link to='/fundwallet'>deposit</Link>
       </div>
       </div>
