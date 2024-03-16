@@ -39,7 +39,6 @@ const Aboutpage = () => {
           In her 10th Anniversary, during the 10th Annual General Meeting, Thursday 29th October, 2009, Abuja, Nigeria, NIBE streamlined its five functional capacities: as a professional institute; as a technical authority; as a learned society; as a qualifying body; and as a regulating body,</p>
           <p>
           In line with this, NIBE established two bodies: 1) a membership association, Association of Biomedical Engineers & Technologists of Nigeria, to take over the functions of a professional institute and of a technical authority; 2) a professional college, College of Biomedical Engineering & Technology, to take over the functions of a learned society and of a qualifying body.
-
           NIBE as the coordinating body retains the function of a regulating body, and, following the approval of a proposal to government for a regulating body, shall regulate the practice of biomedical engineering and technology in Nigeria.</p>
         </div>
       </section>

@@ -7,7 +7,7 @@ const Footer = () => {
         <div className="quicklinks-container">
             <div className="quicklink-card-container">
                 <div className="quicklink-card quick-link-logo-container" data-aos="fade-up">
-                    <img src="/whitelogo (1).png" alt="" className='logo' />
+                    <img src="/ifmbelogo.png" alt="" className='logo' />
                 </div>
                 <div className="quicklink-card" data-aos="fade-up">
                     <Link to='/'>home</Link>
@@ -16,9 +16,9 @@ const Footer = () => {
                       <Link to="/faq">events</Link>
                 </div>
                 <div className="quicklink-card" data-aos="fade-up">
-                      <Link to="/faq">faqs</Link>
-                      <Link to="/about">why choose us</Link>
-                    <Link to="/buybitcoin">buy bitcoin</Link>
+                      <Link to="/faq">College of Biomedical Engineering & Technology</Link>
+                      <Link to="/about">Association of Biomedical Engineers & Technologists of Nigeria</Link>
+                    <Link to="/buybitcoin">memebership</Link>
                 </div>
                 <div className="quicklink-card" data-aos="fade-up">
                 </div>

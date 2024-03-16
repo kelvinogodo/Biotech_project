@@ -69,7 +69,7 @@ const Contact = () => {
                     <FiMail />
                 </div>
                 <div className="contact-card-text">
-                    <p>passiveincominvest@gmail.com</p>
+                    <p>nigeriabme@gmail.com</p>
                 </div>
             </div>
             <div className="contact-card" data-aos="fade-up">
@@ -82,7 +82,7 @@ const Contact = () => {
             </div>
         </div>
         <div className="contact-form-container">
-            <form className="contact-form">
+            <form className="contact-form"data-aos="fade-up">
                 <p className="contact-form-title">Get In Touch </p>
                 <p className="message">type in your message in the form below </p>
                     <div className="flex">
