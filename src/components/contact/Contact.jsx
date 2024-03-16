@@ -46,7 +46,7 @@ const Contact = () => {
 
   return (
     <div className='contact-section' id='contact'>
-        {/* <div className="about-wrapper">
+        <div className="about-wrapper">
         <div className="why-choose-us-text-container about-text contact-p" >
             <div className="header" data-aos="fade-up">
                 <span className="header-line"></span>
@@ -61,7 +61,7 @@ const Contact = () => {
                     <FaPhone />
                 </div>
                 <div className="contact-card-text">
-                    <p>+14172216175</p>
+                    <p>+234-803-8795184</p>
                 </div>
             </div>
             <div className="contact-card" data-aos="fade-up">
@@ -82,28 +82,38 @@ const Contact = () => {
             </div>
         </div>
         <div className="contact-form-container">
-            <form className="contact-form"  ref={form} onSubmit={sendEmail}>
-                <div class="input-group" data-aos="fade-up">
-                    <input required="" type="text" name="name" autocomplete="off" className="input" />
-                    <label className="user-label">name</label>
-                </div>
-                <div class="input-group" data-aos="fade-up">
-                    <input required="" type="text" name="email" autocomplete="off" className="input" />
-                    <label className="user-label">email</label>
-                </div>
-                <div class="input-group" data-aos="fade-up">
-                    <input required="" type="text" name="message" autocomplete="off" className="input" />
-                    <label className="user-label">message</label>
-                </div>
-                <input type="text" style={{display:'none'
-                }} name='subject' value={'contact message from your site'}/>   
-                <input type="text" style={{display:'none'
-                }} name='reply_to' value={'passiveincominvest@gmail.com'}/>   
-                <button className='launch-btn sub-btn' data-aos="fade-up" type='submit'> submit
-                </button>
+            <form className="contact-form">
+                <p className="contact-form-title">Get In Touch </p>
+                <p className="message">type in your message in the form below </p>
+                    <div className="flex">
+                    <label>
+                        <input required placeholder="" type="text" className="contact-form-input" />
+                        <span>Firstname</span>
+                    </label>
+
+                    <label>
+                        <input required placeholder="" type="text" className="contact-form-input" />
+                        <span>Lastname</span>
+                    </label>
+                </div>  
+                        
+                <label>
+                    <input required placeholder="" type="email" className="contact-form-input" />
+                    <span>Email</span>
+                </label> 
+                    
+                <label>
+                    <input required placeholder="" type="password" className="contact-form-input" />
+                    <span>Password</span>
+                </label>
+                <label>
+                    <input required placeholder="" type="password" className="contact-form-input" />
+                    <span>Confirm password</span>
+                </label>
+                <button className="contact-form-submit">SEND</button>
             </form>
         </div>
-        </div> */}
+        </div>
     </div>
   )
 }

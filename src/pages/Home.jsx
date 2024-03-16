@@ -15,7 +15,7 @@ const Home = () => {
   return (
     <main className='home-img'>
         <Landpage />
-        <Why />
+        {/* <Why /> */}
         <Service />
         {/* <Plan /> */}
         {/* <Roadmap /> */}
@@ -23,7 +23,7 @@ const Home = () => {
         <Info />
         {/* <Feature /> */}
         {/* <Review /> */}
-        <Faq />
+        {/* <Faq /> */}
         <Contact />
         <Footer />
     </main>

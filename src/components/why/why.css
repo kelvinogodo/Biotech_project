@@ -11,12 +11,13 @@
 }
 .card-counter{
     position: absolute;
-    right: 20px;
+    right: 10px;
     top: 10px;
     font-family: 'Montserrat','Lato';
     font-size: 3.5rem;
     color: var(--mild-color);
     font-weight: bolder;
+    z-index: -1;
 }
 .why-choose-us-card-container{
     width: 85%;
@@ -42,7 +43,7 @@
 }
 
 .why-choose-us-card:hover span{
-    color: var(--secondary-color);
+    color: rgba(0, 0, 0, 0.274);
     transition: all 0.2s ease-in-out !important;
 }
 
@@ -50,7 +51,7 @@
     font-weight: 500;
     align-self: flex-start;
     color: var(--dark);
-    margin: 10px 0px 20px 0px;
+    margin: 40px 0px 20px 0px;
     font-size: 1rem;
     text-transform: uppercase;
 }

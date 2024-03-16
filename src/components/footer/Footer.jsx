@@ -12,7 +12,8 @@ const Footer = () => {
                 <div className="quicklink-card" data-aos="fade-up">
                     <Link to='/'>home</Link>
                       <Link to="/about">about</Link>
-                      <Link to="/faq">roadmap</Link>
+                      <Link to="/faq">post</Link>
+                      <Link to="/faq">events</Link>
                 </div>
                 <div className="quicklink-card" data-aos="fade-up">
                       <Link to="/faq">faqs</Link>

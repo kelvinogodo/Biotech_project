@@ -11,10 +11,9 @@ const About = () => {
                 <span className="header-line"></span>
                 <h2>about us</h2>
             </div>
-            <h1 data-aos="fade-up">learn more about passive income invest</h1>
+            <h1 data-aos="fade-up">Nigerian Institute for Biomedical Engineering</h1>
             <p data-aos="fade-up">
-                passive income invest is an online platform that maximizes the slight differences in prices of global forex exchange rate and investment in real estate, crude oil and agriculture to inturn satisfy her clients. We also help to manage and save our client's funds for future use, ready to be withdrawn at any point. <br />
-                we have very experienced experts and agents in the above mentioned areas of investment, so be rest assured that your investments are very safe with us.
+                The Nigerian Institute for Biomedical Engineering, NIBE is a non-governmental organisation representing the biomedical engineering and technology profession and its members in Nigeria and in international organisations, having members numbering over 5,000, from the clinical setting, academia, industry, research and training, and the government.<br/> NIBE was established in 1999 with the vision Ã¢â‚¬Å“to develop and advance the biomedical science, health and human well-being of Nigeria through modern technological approaches comparable to those obtainable in any developed country of the worldÃ¢â‚¬Â.
             </p>
             <button className='launch-btn launch' data-aos="fade-up" onClick={()=>{
                 navigate('/about')
@@ -24,7 +23,7 @@ const About = () => {
             </button>
         </div>
         <div className="about-img-container">
-            <img src="/nibelogo'.gif" data-aos="fade-up" className='about-img'/>
+            <img src="/ifmbelogo.png" data-aos="fade-up" className='about-img'/>
         </div>
         </div>
     </div>

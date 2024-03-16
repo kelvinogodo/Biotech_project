@@ -14,17 +14,17 @@ const Why = () => {
         <div className="why-choose-us-card-container">
             <div className="why-choose-us-card" data-aos="fade-up">
                 <span className="card-counter">01</span>
-                <h2>Ultra Fast & Secure</h2>
+                <h2>Hybrid 2024 Career Development Course.</h2>
                 <p>we employ the use of latest reliable and sophisticated technology, to ensure strongly secured, fast and reliable transactions.</p>
             </div>
             <div className="why-choose-us-card" data-aos="fade-up">
                 <span className="card-counter">02</span>
-                <h2>Highly Scalable</h2>
+                <h2>NABET holds her AGM in Owerri, Nigeria, April 03, 2024.</h2>
                 <p>your investments are very much upgradeable at any point you want to. we provide our clients the ability to scale up their investments.</p>
             </div>
             <div className="why-choose-us-card" data-aos="fade-up">
                 <span className="card-counter">03</span>
-                <h2>Reliable & Low Cost</h2>
+                <h2>World Congress on Medical Physics and Biomedical Engineering.</h2>
                 <p>We use our advanced experience in arbitrage trading to minimize our clients cost of trade and unnecessary transaction expenses.</p>
             </div>
         </div>

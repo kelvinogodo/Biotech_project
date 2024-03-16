@@ -14,9 +14,9 @@
     align-self: flex-start;
 }
 .about-img-container img{
-    width: 70%;
+    width: 60%;
     object-fit: cover;
-    height: 70%;
+    height: 60%;
 }
 
 .about-text{
