@@ -380,7 +380,6 @@ const Signup = ({route}) => {
 
   return (
     <main className='signup-page'>
-        {/* <Header /> */}
         {
         loader && 
           <Loader />
@@ -390,7 +389,7 @@ const Signup = ({route}) => {
                       e.preventDefault()
                       Signup()
         }} >
-          <img src="/20230607_210241.png" alt="" className="signup-logo" onClick={()=>{
+          <img src="/nibelogo_-removebg-preview.png" alt="" className="signup-logo" onClick={()=>{
               navigate('/')
             }}/>
               <span class="subtitle">Get started with passive income invest, just create an account and enjoy the experience.</span>

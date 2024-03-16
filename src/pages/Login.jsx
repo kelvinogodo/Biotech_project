@@ -102,7 +102,6 @@ const Login = ({route}) => {
     }
   return (
     <main className='login-page'>
-        {/* <Header /> */}
         {
         loader && 
           <Loader />
@@ -113,7 +112,7 @@ const Login = ({route}) => {
                     login()
                     }}>
           <div class="logo_container" onClick={()=>navigate('/')}>
-            <img src="/20230607_222354.png" alt="" />
+            <img src="/nibelogo_-removebg-preview.png" alt="" />
           </div>
           <div class="title_container">
             <p class="titles">Login to your Account</p>

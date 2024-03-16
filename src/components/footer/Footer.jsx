@@ -7,7 +7,7 @@ const Footer = () => {
         <div className="quicklinks-container">
             <div className="quicklink-card-container">
                 <div className="quicklink-card quick-link-logo-container" data-aos="fade-up">
-                    <img src="/ifmbelogo.png" alt="" className='logo' />
+                    <img src="/nibelogo_-removebg-preview.png" alt="" className='logo' />
                 </div>
                 <div className="quicklink-card" data-aos="fade-up">
                     <Link to='/'>home</Link>

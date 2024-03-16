@@ -23,7 +23,7 @@ import Profile from './components/profile/Profile'
 import VerifyEmail from './pages/VerifyEmail';
 import WithdrawalLogs from './components/WithdrawalLogs';
 import Checkout from './components/Checkout';
-import Admindashboard from './components/admindashboard/Admindashboard';
+// import Admindashboard from './components/admindashboard/Admindashboard';
 import Deposit from './components/deposit/Deposit';
 import Aboutpage from './pages/Aboutpage';
 import Faq from './pages/Faq';
@@ -92,7 +92,7 @@ function App() {
             <Route path='/user/:id' element={<VerifyEmail route={route}/>}/>
             <Route path='/withdrawlogs' element={<WithdrawalLogs route={route}/>}/>
             <Route path='/checkout' element={<Checkout route={route}/>}/>
-            <Route path='/admin' element={<Admindashboard route={route}/>}/>
+            {/* <Route path='/admin' element={<Admindashboard route={route}/>}/> */}
             <Route path='/deposit' element={<Deposit route={route}/>}/>
             <Route path='/about' element={<Aboutpage />}/>
             <Route path='/faq' element={<Faq />}/>

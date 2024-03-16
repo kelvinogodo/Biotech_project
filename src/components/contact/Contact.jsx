@@ -1,8 +1,6 @@
 import React from 'react'
 import './contact.css'
-import {BsFillWalletFill} from 'react-icons/bs'
 import {FaPhone,FaTelegramPlane} from 'react-icons/fa'
-import {AiOutlineMail} from 'react-icons/ai'
 import {FiMail} from 'react-icons/fi'
 import { useState ,useRef} from 'react'
 import emailjs from '@emailjs/browser';
