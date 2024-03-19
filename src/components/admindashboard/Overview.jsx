@@ -130,9 +130,6 @@ const Overview = ({showOverview,showCreateSection,showEditSection,showCreateProp
   const [propertyDescription, setPropertyDescription] = useState()
   const [propertyLocation, setPropertyLocation] = useState()
   const [propertyPrice, setPropertyPrice] = useState()
-  const [frontViewImage, setFrontViewImage] = useState()
-  const [sideViewImage, setSideViewImage] = useState()
-  const [backViewImage, setBackViewImage] = useState()
   const [propertyType, setPropertyType] = useState()
 
   
@@ -634,9 +631,6 @@ const Overview = ({showOverview,showCreateSection,showEditSection,showCreateProp
             }}/>
             <label htmlFor="file-upload-input" className='label'>full view picture</label>
             <input type="file" name='propimg' accept=".png,.jpg,.webp,.svg,.jpeg" id="file-upload-input" className='file-upload-input' 
-              // const [fullview, setFullview] = useState()
-              // const [sideview, setSideview] = useState()
-              // const [backview, setBackview] = useState()
             onChange={(e)=>{
               const frontImage  = e.target.files[0]
               setFullview(frontImage)

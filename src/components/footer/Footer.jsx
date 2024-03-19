@@ -20,16 +20,15 @@ const Footer = () => {
                       <Link to="/about">Association of Biomedical Engineers & Technologists of Nigeria</Link>
                     <Link to="/buybitcoin">memebership</Link>
                 </div>
-                <div className="quicklink-card" data-aos="fade-up">
+                  <div className="quicklink-card" data-aos="fade-up">
+                      <Link to="/faq">categories of individual membership of the College</Link>
+                      <Link to="/about">epoch-making procession of the first set of Fellows of the College of Biomedical Engineering and Technology.</Link>
+                      <Link to="/buybitcoin">news@nibe</Link>
                 </div>
             </div>
             <div className="copyright-container">
                 <div className="copyright-txt">
                     <p> copyright &copy; 2017 </p>
-                </div>
-                <div className="policy-txt">
-                    <Link to="/policy">privacy policy</Link>
-                    <Link to="/policy">terms and condition</Link>
                 </div>
             </div>
         </div>

@@ -165,7 +165,6 @@ const Login = ({route}) => {
             <hr class="line" />   
           </div>
           <Link to="/signup" className="note">create account</Link>
-          <Link class="note" to='/policy'>Terms of use &amp; Conditions</Link>
         </form>
         </div>       
     </main>

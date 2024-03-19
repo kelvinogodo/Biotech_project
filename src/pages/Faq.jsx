@@ -6,6 +6,9 @@ const Faqpage = () => {
   return (
     <main className='gold-page'>
       <Header />
+      <section className="post-section">
+        
+      </section>
       <Contact />
       <Footer />
     </main>

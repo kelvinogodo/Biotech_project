@@ -7,9 +7,6 @@ import Login from './pages/Login'
 import Home from './pages/Home';
 import AOS from 'aos'
 import 'aos/dist/aos.css'
-import GoldPage from './pages/GoldPage'
-import RealEsatePage from './pages/Real-EstatePage'
-import AgroTechPage from './pages/AgroTechPage'
 import Swal from 'sweetalert2';
 import Signup from './pages/Signup';
 import Userdashboard from './pages/Userdashboard'
@@ -27,7 +24,6 @@ import Checkout from './components/Checkout';
 import Deposit from './components/deposit/Deposit';
 import Aboutpage from './pages/Aboutpage';
 import Faq from './pages/Faq';
-import Buybitcoin from './pages/Buybitcoin';
 import Policy from './pages/Policy';
 function App() {
 
@@ -39,7 +35,6 @@ function App() {
       delay: 100,
     })
       AOS.refresh()
-    // duration=1200;
     }, [])
 
     const Toast = Swal.mixin({
@@ -53,7 +48,7 @@ function App() {
         toast.addEventListener('mouseleave', Swal.resumeTimer)
       }
     })
-    const route = 'https://brave-earrings-pike.cyclic.cloud'
+    const route = 'http://localhost:5000'
   
   return (
     <>
@@ -95,12 +90,8 @@ function App() {
             {/* <Route path='/admin' element={<Admindashboard route={route}/>}/> */}
             <Route path='/deposit' element={<Deposit route={route}/>}/>
             <Route path='/about' element={<Aboutpage />}/>
-            <Route path='/faq' element={<Faq />}/>
-            <Route path='/policy' element={<Policy />}/>
-            <Route path='/buybitcoin' element={<Buybitcoin />}/>
-            <Route path='/goldstock' element={<GoldPage />}/>
-            <Route path='/agrotech' element={<AgroTechPage />}/>
-            <Route path='/realestate' element={<RealEsatePage />}/>
+            <Route path='/news' element={<Faq />}/>
+            <Route path='/membership' element={<Policy />}/>
           </Routes>
         </motion.div>
       </Router>

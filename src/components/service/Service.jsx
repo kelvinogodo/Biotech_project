@@ -17,7 +17,7 @@ const Service = () => {
                   <small>09/07/17</small>
                   <h3>Hybrid 2024 Career Development Course</h3>
                   <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi doloribus vel perspiciatis cupiditate provident earum autem veniam beatae sed, inventore quibusdam quis accusamus consectetur rerum. Labore magni ipsa repudiandae sit.</p>
-                  <a href="/goldstock">read more</a>
+                  <a href="/">read more</a>
               </div>
               </div>
               <div className="gold-card" data-aos="fade-up">
@@ -25,7 +25,7 @@ const Service = () => {
                   <small>01/09/16</small>
                   <h3>NABET holds her AGM in Owerri, Nigeria, April 03, 2024.</h3>
                   <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi doloribus vel perspiciatis cupiditate provident earum autem veniam beatae sed, inventore quibusdam quis accusamus consectetur rerum. Labore magni ipsa repudiandae sit.</p>
-                  <Link to="/realestate">read more</Link>
+                  <Link to="/">read more</Link>
               </div>
               </div>
               <div className="gold-card" data-aos="fade-up">
@@ -33,7 +33,7 @@ const Service = () => {
                   <small>03/03/17</small>
                   <h3>Hybrid 2024 Career Development Course</h3>
                   <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi doloribus vel perspiciatis cupiditate provident earum autem veniam beatae sed, inventore quibusdam quis accusamus consectetur rerum. Labore magni ipsa repudiandae sit.</p>
-                      <Link to="/agrotech">read more</Link>
+                      <Link to="/">read more</Link>
               </div>
               </div>
           </div>

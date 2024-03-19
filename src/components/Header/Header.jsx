@@ -49,7 +49,7 @@ const Header = () => {
             </ul>
         </nav>
         <div className="sign-up-btn-container">
-            <button className='signup-btn' onClick={()=>{navigate('/login')}}>sign up</button>
+            <button className='signup-btn' onClick={()=>{navigate('/signup')}}>sign up</button>
         </div>
         <div class="mobile-menu-container" onClick={()=>{
             setShowModal(!showModal)
@@ -66,7 +66,7 @@ const Header = () => {
                     <Link to='/'>home</Link>
                     <Link to='/about'>about</Link>
                     <Link to='/faq'>news</Link>
-                    <Link to='/buybitcoin'>membership</Link>
+                    <Link to='/policy'>membership</Link>
                     <Link to='/signup'>signup</Link>
                     <Link to='/login'>login</Link>
                 </ul>
