@@ -5,7 +5,7 @@ const DashboardHeader = () => {
   }
   return (
     <div className='dashboard-header'>
-      <button type="submit" className='submit-btn' onClick={logout}>logout</button>
+      <button type="submit" className='logout-btn' onClick={logout}>logout</button>
     </div>
   )
 }

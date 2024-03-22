@@ -31,7 +31,7 @@ const MenuBar = ({ editor }) => {
     }
 
     // empty
-    if (url === '') {
+    if (url === 'task-bar-btn') {
       editor.chain().focus().extendMarkRange('link').unsetLink()
         .run()
 
@@ -49,106 +49,106 @@ const MenuBar = ({ editor }) => {
 
   return (
     <div className='task-bar'>
-      <button
+      <span
         onClick={() => editor.chain().focus().toggleBold().run()}
-        className={editor.isActive('bold') ? 'is-active' : ''}
+        className={editor.isActive('bold') ? 'is-active' : 'task-bar-btn'}
       >
         <FaBold />
-      </button>
-      <button
+      </span>
+      <span
         onClick={() => editor.chain().focus().toggleItalic().run()}
-        className={editor.isActive('italic') ? 'is-active' : ''}
+        className={editor.isActive('italic') ? 'is-active' : 'task-bar-btn'}
       >
         <BiItalic/>
-      </button>
-      <button
+      </span>
+      <span
         onClick={() => editor.chain().focus().toggleStrike().run()}
-        className={editor.isActive('strike') ? 'is-active' : ''}
+        className={editor.isActive('strike') ? 'is-active' : 'task-bar-btn'}
       >
         <ImStrikethrough/>
-      </button>
+      </span>
       
-      <button
+      <span
         onClick={() => editor.chain().focus().setParagraph().run()}
-        className={editor.isActive('paragraph') ? 'is-active' : ''}
+        className={editor.isActive('paragraph task-bar-btn') ? 'is-active' : 'task-bar-btn'}
       >
        <BsParagraph />
-      </button>
-      <button
+      </span>
+      <span
         onClick={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}
-        className={editor.isActive('heading', { level: 1 }) ? 'is-active' : ''}
+        className={editor.isActive('heading', { level: 1 }) ? 'is-active' : 'task-bar-btn'}
       >
        <FaHeading/>
-      </button>
-      <button
+      </span>
+      <span
         onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}
-        className={editor.isActive('heading', { level: 2 }) ? 'is-active' : ''}
+        className={editor.isActive('heading', { level: 2 }) ? 'is-active' : 'task-bar-btn'}
       >
         <BiHeading/>
-      </button>
-      <button
+      </span>
+      <span
         onClick={() => editor.chain().focus().toggleHeading({ level: 3 }).run()}
-        className={editor.isActive('heading', { level: 3 }) ? 'is-active' : ''}
+        className={editor.isActive('heading', { level: 3 }) ? 'is-active' : 'task-bar-btn'}
       >
         h3
-      </button>
-      <button
+      </span>
+      <span
         onClick={() => editor.chain().focus().toggleHeading({ level: 4 }).run()}
-        className={editor.isActive('heading', { level: 4 }) ? 'is-active' : ''}
+        className={editor.isActive('heading', { level: 4 }) ? 'is-active' : 'task-bar-btn'}
       >
         h4
-      </button>
-      <button
+      </span>
+      <span
         onClick={() => editor.chain().focus().toggleHeading({ level: 5 }).run()}
-        className={editor.isActive('heading', { level: 5 }) ? 'is-active' : ''}
+        className={editor.isActive('heading', { level: 5 }) ? 'is-active' : 'task-bar-btn'}
       >
         h5
-      </button>
-      <button
+      </span>
+      <span
         onClick={() => editor.chain().focus().toggleHeading({ level: 6 }).run()}
-        className={editor.isActive('heading', { level: 6 }) ? 'is-active' : ''}
+        className={editor.isActive('heading', { level: 6 }) ? 'is-active' : 'task-bar-btn'}
       >
         h6
-      </button>
-      <button
+      </span>
+      <span
         onClick={() => editor.chain().focus().toggleBulletList().run()}
-        className={editor.isActive('bulletList') ? 'is-active' : ''}
+        className={editor.isActive('bulletList') ? 'is-active' : 'task-bar-btn'}
       >
         <GoListUnordered/>
-      </button>
-      <button
+      </span>
+      <span
         onClick={() => editor.chain().focus().toggleOrderedList().run()}
-        className={editor.isActive('orderedList') ? 'is-active' : ''}
+        className={editor.isActive('orderedList') ? 'is-active' : 'task-bar-btn'}
       >
         <GoListOrdered/>
-      </button>
-      <button
+      </span>
+      <span
         onClick={() => editor.chain().focus().toggleBlockquote().run()}
-        className={editor.isActive('blockquote') ? 'is-active' : ''}
+        className={editor.isActive('blockquote') ? 'is-active' : 'task-bar-btn'}
       >
         <TbBlockquote/>
-      </button>
-      <button onClick={() => editor.chain().focus().setHorizontalRule().run()}>
+      </span>
+      <span className='task-bar-btn' onClick={() => editor.chain().focus().setHorizontalRule().run()}>
         <VscHorizontalRule/>
-      </button>
-      <button onClick={() => editor.chain().focus().setHardBreak().run()}>
+      </span>
+      <span className='task-bar-btn' onClick={() => editor.chain().focus().setHardBreak().run()}>
         <ImPageBreak/>
-      </button>
-      <button
+      </span>
+      <span
         onClick={() => editor.chain().focus().toggleUnderline().run()}
-        className={editor.isActive('underline') ? 'is-active' : ''}
+        className={editor.isActive('underline') ? 'is-active' : 'task-bar-btn'}
       >
         <FaUnderline />
-      </button>
-      <button onClick={setLink} className={editor.isActive('link') ? 'is-active' : ''}>
+      </span>
+      <span onClick={setLink} className={editor.isActive('link') ? 'is-active' : 'task-bar-btn'}>
         <FaLink />
-      </button>
-      <button onClick={() => editor.chain().focus().undo().run()}>
+      </span>
+      <span className='task-bar-btn' onClick={() => editor.chain().focus().undo().run()}>
         <ImUndo/>
-      </button>
-      <button onClick={() => editor.chain().focus().redo().run()}>
+      </span>
+      <span className='task-bar-btn' onClick={() => editor.chain().focus().redo().run()}>
         <ImRedo/>
-      </button>
+      </span>
     </div>
   )
 }

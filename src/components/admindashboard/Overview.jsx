@@ -11,7 +11,7 @@ import parser from 'html-react-parser'
 import Swal from 'sweetalert2'
 // config.js
 const app = {
-  API_URL: process.env.API_URL ? process.env.API_URL : "https://localhost:3000",
+  API_URL: process.env.API_URL ? process.env.API_URL : "https://localhost:5000",
 };
 
 export const getBaseApiUrl = () => {
@@ -40,16 +40,16 @@ const Overview = ({showOverview,showCreateSection,showEditSection,showCreateProp
     setProperties(propertiesArray)
     console.log(`${posts} ${propertiesArray}`)
   }
-  useEffect(()=>{ 
-    const admin = localStorage.getItem('user') 
-    if(admin !== null){
-        console.log('welcome admin')
-    }
-    else{
-        window.location.href= '/Admin'
-    }
-  fetchData()
-  },[])
+  // useEffect(()=>{ 
+  //   const admin = localStorage.getItem('user') 
+  //   if(admin !== null){
+  //       console.log('welcome admin')
+  //   }
+  //   else{
+  //       window.location.href= '/Admin'
+  //   }
+  // fetchData()
+  // },[])
   const [postTitle,setPostTitle] = useState()
   const [postBody, setPostBody] = useState()
   const [postAuthor,setPostAuthor] = useState('ogodo dominic')
@@ -456,65 +456,6 @@ const Overview = ({showOverview,showCreateSection,showEditSection,showCreateProp
           <div className="tiptap-container">
             <TipTap setPostBody={setNewPostBody} body={activePost ? activePost.body : 'edit body'}/>
           </div>
-          <input type="file" name='images' accept=".png,.jpg,.webp,.svg,.jpeg" className='file-upload-input'
-             onChange={(e)=>{
-              const image = e.target.files[0]
-              setNewPostImage(image)
-            }}
-          />
-          <input type="submit" value="publish" className='create-btn'/>
-        </form>
-        </div>
-        <div className="overview ProseMirror">
-        </div>
-      </section>
-      }
-      {
-        propertyEditForm && 
-        <section className='post-view-section'>
-        <div className="form-view">
-        <span className='sortlist-close-btn' onClick={()=>{
-            setPropertyEditForm(false)
-        }}>
-            <FaWindowClose />
-        </span>
-        <form className="create-post-form" onSubmit={editProperty}>
-        <div contentEditable='true' ref={newPropertyLocation} className='edit-input'>{activeProperty ? activeProperty.location : 'edit title'}</div>
-          <div className="tiptap-container">
-            <TipTap setPostBody={setNewPropertyDescription} body={activeProperty ? activeProperty.description : 'edit description'}/>
-          </div>
-          <div contentEditable='true' ref={newPropertyPrice}  className='edit-input'>{activeProperty ? activeProperty.price : 'edit price'}</div>
-          <input type="file" name='images' accept=".png,.jpg,.webp,.svg,.jpeg" className='file-upload-input'
-             onChange={(e)=>{
-              const image = e.target.files[0].name.toString()
-              setNewPropertyFrontViewImage(image)
-            }}
-            required
-          />
-          <input type="file" name='images' accept=".png,.jpg,.webp,.svg,.jpeg" className='file-upload-input'
-             onChange={(e)=>{
-              const image = e.target.files[0].name.toString()
-              setNewPropertyBackViewImage(image)
-            }}
-            required
-          />
-          <input type="file" name='images' accept=".png,.jpg,.webp,.svg,.jpeg" className='file-upload-input'
-             onChange={(e)=>{
-              const image = e.target.files[0].name.toString()
-              setNewPropertySideViewImage(image)
-            }}
-            required
-          />
-          <div className="category-btn-container"> 
-          {
-            category.map(categ =>(
-              <p key={categ.id} onClick={()=>{
-                setNewPostCategory(categ.title)
-                setCategory(category.map(cat =>(cat.title === categ.title ? {...cat, active:true} : {...cat,active:false}))) 
-              }} className={`category-btn ${categ.active ? 'active' : ''}`}>{categ.title}</p>
-            ))
-          }
-          </div>
           <input type="submit" value="publish" className='create-btn'/>
         </form>
         </div>
@@ -554,52 +495,15 @@ const Overview = ({showOverview,showCreateSection,showEditSection,showCreateProp
               setPostTitle(title)
             }}
             />
-            <input type="text" required placeholder='Image alt text'className='input' 
-            onChange={(e)=>{
-              const alt = e.target.value
-              setAlt(alt)
-            }}
-            />
-            <input type="text" required placeholder='SEO title'className='input' 
-            onChange={(e)=>{
-              const alt = e.target.value
-              setSeo(alt)
-            }}
-            />
-            <input type="text" required placeholder='meta description'className='input' 
-            onChange={(e)=>{
-              const alt = e.target.value
-              setMeta(alt)
-            }}
-            />
             <div className="tiptap-container">
               <TipTap setPostBody={setPostBody} body={''}/>
             </div>
-            <input type="text" placeholder='post author' className='input'
+            <input type="text" placeholder=' published by' className='input'
               onChange={(e)=>{
                 const author = e.target.value.toString()
                 setPostAuthor(author)
               }} required
             />
-            <input type="file" name='theFiles' accept=".png,.jpg,.webp,.svg,.jpeg" className='file-upload-input'
-               onChange={(e)=>{
-                const image = e.target.files[0]
-                setUploadImage(image)
-              }}
-              required
-            />
-            <span className='create-category'>choose category</span>
-            <div className="category-btn-container"> 
-            {
-              category.map(categ =>(
-                <p key={categ.id} onClick={()=>{
-                  setPostCategory(categ.title)
-                  setCategory(category.map(button =>(button.id === categ.id ? {...button,active:true} : {...button,active:false})))
-
-                }} className={`category-btn ${categ.active ? 'active' : ''}`}>{categ.title}</p>
-              ))
-            }
-            </div>
             <input type="submit" value="create post" className='create-btn'/>
           </form>
           </div>
@@ -610,62 +514,6 @@ const Overview = ({showOverview,showCreateSection,showEditSection,showCreateProp
             </div>}
           </div>
         </section>}
-        {showCreatePropertySection && 
-          <section className='post-view-section'>
-          <div className="form-view">
-          <form className="create-post-form create-property" onSubmit={(e)=>{
-            e.preventDefault()
-            uploadPropertyImages()
-          }}>
-            <input type="text" placeholder='property price'className='input' onChange={(e)=>{
-              const price  = e.target.value.toString()
-              setPropertyPrice(price)
-            }}/>
-            <input type="text" placeholder='property location' className='edit-input' onChange={(e)=>{
-              const location  = e.target.value.toString()
-              setPropertyLocation(location)
-            }} />
-            <textarea type="text" placeholder='property description' className='create-post-textarea' onChange={(e)=>{
-              const description  = e.target.value.toString()
-              setPropertyDescription(description)
-            }}/>
-            <label htmlFor="file-upload-input" className='label'>full view picture</label>
-            <input type="file" name='propimg' accept=".png,.jpg,.webp,.svg,.jpeg" id="file-upload-input" className='file-upload-input' 
-            onChange={(e)=>{
-              const frontImage  = e.target.files[0]
-              setFullview(frontImage)
-            }}/>
-            <label htmlFor="file-upload-input" className='label'>side view picture</label>
-            <input type="file" name='propimg' accept=".png,.jpg,.webp,.svg,.jpeg" id="file-upload-input" className='file-upload-input' onChange={(e)=>{
-              const sideImage  = e.target.files[0]
-              setSideview(sideImage)
-              }}/>
-            <label htmlFor="file-upload-input" className='label'>side view picture</label>
-            <input type="file" name='propimg' accept=".png,.jpg,.webp,.svg,.jpeg" id="file-upload-input" className='file-upload-input'onChange={(e)=>{
-              const backImage  = e.target.files[0]
-              setBackview(backImage)
-              }} />
-            <span className='create-category'>choose property type</span>
-            <div className="category-btn-container"> 
-            {
-              propertyTypes.map(categ =>(
-                <p key={categ.id} onClick={()=>{
-                  setPropertyType(categ.title)
-                  setPropertyTypes(propertyTypes.map(button =>(button.id === categ.id ? {...button,active:true} : {...button,active:false})))
-                }} className={`category-btn ${categ.active ? 'active' : ''}`}>{categ.title}</p>
-              ))
-            }
-            </div>
-            <input type="submit" value="create property" className='create-btn'/>
-          </form>
-          </div>
-          <div className="overview ProseMirror">
-            {propertyDescription && <p>{propertyDescription}</p>}
-            {propertyLocation && <p>{propertyLocation}</p>}
-            {propertyPrice && <p>{propertyPrice}</p>}
-          </div>
-          </section>
-          }
         {showEditSection && 
           <section className='overview-page dashboard-property-list'>
             {
