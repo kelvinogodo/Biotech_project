@@ -16,8 +16,6 @@ const DashboardSidebar = ({toggleEdit,toggleCreate,toggleOverview,closeEdit,clos
        </div>
        <div className="tab" >
           <MdOutlineCreateNewFolder />
-          <p>create</p>
-          <span className="subtitle">
             <p onClick={()=>{
               toggleCreate()
               closeEdit()
@@ -25,20 +23,9 @@ const DashboardSidebar = ({toggleEdit,toggleCreate,toggleOverview,closeEdit,clos
               closeCreateProperty()
               closePropetyEdit()
               }}>create post</p>
-
-            <p onClick={()=>{
-              toggleCreateProperty()
-              closeCreate()
-              closeEdit()
-              closeOverview()
-              closePropetyEdit()
-              }}>create property</p>
-          </span>
        </div>
        <div className="tab">
           <FiEdit3 />
-          <p>edit</p>
-          <span className="subtitle">
             <p
             onClick={()=>{
               toggleEdit()
@@ -47,15 +34,6 @@ const DashboardSidebar = ({toggleEdit,toggleCreate,toggleOverview,closeEdit,clos
               closePropetyEdit()
               closeCreateProperty()
               }}>edit post</p>
-            <p
-            onClick={()=>{
-              togglePropetyEdit()
-              closeEdit()
-              closeOverview()
-              closeCreate()
-              closeCreateProperty()
-              }}>edit property</p>
-          </span>
        </div>
     </aside>
   )

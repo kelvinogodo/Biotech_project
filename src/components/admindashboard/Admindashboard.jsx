@@ -10,7 +10,7 @@ import {AiOutlineHome} from 'react-icons/ai'
 import {ImUserPlus} from 'react-icons/im'
 import {IoIosSwitch} from 'react-icons/io'
 import {RiEdit2Fill} from 'react-icons/ri'
-const Admindashboard = () => {
+const Admindashboard = ({route}) => {
   
   const [showOverview, setShowOverview] = useState(true)
   const [showCreatePostSection, setShowPostCreateSection] = useState(false)
@@ -131,7 +131,7 @@ const Admindashboard = () => {
       <DashboardHeader />
       <div className="dashboard-body">
         <DashboardSidebar toggleEdit={toggleEdit} toggleCreate={toggleCreate} toggleOverview={toggleOverview} closeOverview={closeOverview} closeCreate={closeCreate} closeEdit={closeEdit} toggleCreateProperty={toggleCreateProperty} togglePropetyEdit={togglePropetyEdit} closeCreateProperty={closeCreateProperty} closePropetyEdit={closePropetyEdit} />
-        <Overview showOverview={showOverview} showCreateSection={showCreatePostSection} showEditSection={showEditPostSection} showCreatePropertySection={showCreatePropertySection} showEditPropertySection={showEditPropertySection} />
+        <Overview showOverview={showOverview} showCreateSection={showCreatePostSection} showEditSection={showEditPostSection} showCreatePropertySection={showCreatePropertySection} showEditPropertySection={showEditPropertySection} route={route} />
       </div>
     </>
   )

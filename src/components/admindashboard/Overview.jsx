@@ -9,133 +9,88 @@ import {RiFileEditLine} from 'react-icons/ri'
 import TipTap from './TipTap'
 import parser from 'html-react-parser'
 import Swal from 'sweetalert2'
-// config.js
-const app = {
-  API_URL: process.env.API_URL ? process.env.API_URL : "https://localhost:5000",
-};
+import Loader from '../Loader'
 
-export const getBaseApiUrl = () => {
-  const url = process.browser ? "/api" :app.API_URL
-  if (process.browser) {
-    return "/api";
-  }
-// see `app` defined in my previous reply
-  return url;
-};
-const Overview = ({showOverview,showCreateSection,showEditSection,showCreatePropertySection,showEditPropertySection}) => {
-  const [isLoading,setIsLoading] = useState(false)
-  // posts and properties state managers 
+
+const Overview = ({showOverview,showCreateSection,showEditSection,route}) => {
+  const [isLoading, setIsLoading] = useState(false)
+  
+  // posts state managers 
   const [posts,setPosts]= useState() 
-  const [properties,setProperties]= useState() 
+  
   const fetchData = async ()=>{
-    const [postRequest, propertyRequest] = await Promise.all ([
-     fetch(`${getBaseApiUrl()}/posts`),
-     fetch(`${getBaseApiUrl()}/properties`)
-    ])
-    const [posts,propertiesArray] = await Promise.all ([
-     postRequest.json(),
-     propertyRequest.json()
-    ]) 
+    const [postRequest] = await (
+     fetch(`${route}/api/fetchPosts`))
+    const posts = await (
+     postRequest.json()) 
     setPosts(posts)
-    setProperties(propertiesArray)
-    console.log(`${posts} ${propertiesArray}`)
   }
+
   // useEffect(()=>{ 
-  //   const admin = localStorage.getItem('user') 
+  //   const admin = localStorage.getItem('user')
   //   if(admin !== null){
   //       console.log('welcome admin')
   //   }
   //   else{
-  //       window.location.href= '/Admin'
+  //       window.location.href= '/admin'
   //   }
   // fetchData()
   // },[])
+  
   const [postTitle,setPostTitle] = useState()
   const [postBody, setPostBody] = useState()
   const [postAuthor,setPostAuthor] = useState('ogodo dominic')
-  const [postImage, setPostImage] = useState()
   const [postDate,setPostDate] = useState()
-  const [postCategory,setPostCategory] = useState('normal')
-  const [alt, setAlt] = useState()
-  const [seoTitle, setSeo] = useState()
-  const [meta, setMeta] = useState()
 
-  const [uploadImage,setUploadImage] = useState()
+  // const [uploadImage,setUploadImage] = useState()
 
-  const uploadFile = async ()=>{
-    setIsLoading(true)
-    const formData = new FormData
-    formData.append('file',uploadImage)
-    formData.append('upload_preset','upload');
-    const req = await fetch('https://api.cloudinary.com/v1_1/duesyx3zu/image/upload',
-      {
-      method:'POST',
-      body:formData,
-    }
-    )
-    const res = await req.json()
-    res && setIsLoading(false)
-    console.log(`${res.secure_url} .... upload ran first`)
-    await createPost(res.secure_url)
-  }
+  // const uploadFile = async ()=>{
+  //   setIsLoading(true)
+  //   const formData = new FormData()
+  //   formData.append('file',uploadImage)
+  //   formData.append('upload_preset','upload');
+  //   const req = await fetch('https://api.cloudinary.com/v1_1/duesyx3zu/image/upload',
+  //     {
+  //     method:'POST',
+  //     body:formData,
+  //   }
+  //   )
+  //   const res = await req.json()
+  //   res && setIsLoading(false)
+  //   console.log(`${res.secure_url} .... upload ran first`)
+  //   await createPost(res.secure_url)
+  // }
 
-  const createPost = async (url)=>{
+  const createPost = async () => {
+    
     const d = new Date().toLocaleDateString()
     const date = d
     setPostDate(date)
     const newPost = {
       title:`${postTitle}`,
       body:`${postBody}`,
-      image:url,
       author:`${postAuthor}`,
       date:`${date}`,
-      category:`${postCategory}`,
-      alt: alt,
-      seoTitle: seoTitle,
-      meta: meta,
     }
-    if(postImage !== 'undefined'){
-    const req = await fetch(`${getBaseApiUrl()}/createPost`,
-    {
+
+    const req = await fetch(`${route}/api/createPost`, {
       method:'POST',
-      headers:{
-      'content-Type': 'application/json'
+      headers: {
+        'content-Type':'application/json'
       },
       body: JSON.stringify(newPost)
-    }
-    )
+    })
+
     const res = await req.json()
-    switch (res) {
-      case 'created':
-        Swal.fire(
-          'congrats',
-          'post successfully created ',
-          'success'
-        )
-        break;
-      default: Swal.fire(
-        'warning',
-        `${res}`,
-        'warning'
-      )
-        break;
+    if (res.status == 'ok') {
+      console.log('post successfully created')
     }
-  }else{
-    return
-  }
     fetchData()
-  }
+  }  
 
-  // property states 
-  const [propertyDescription, setPropertyDescription] = useState()
-  const [propertyLocation, setPropertyLocation] = useState()
-  const [propertyPrice, setPropertyPrice] = useState()
-  const [propertyType, setPropertyType] = useState()
-
-  
-  // delete post function 
+// delete post function 
   const deletePost = async (id)=>{
-    const deleteRequest = await fetch(`${getBaseApiUrl()}/deletePost`,
+    const deleteRequest = await fetch(`${route}/api/deletePost`,
     {
       method:'POST',
       headers:{
@@ -163,224 +118,25 @@ const Overview = ({showOverview,showCreateSection,showEditSection,showCreateProp
     }
     fetchData()
   }
-  // delete property function 
-  const deleteProperty = async (id)=>{
-    const deleteRequest = await fetch(`${getBaseApiUrl()}/deleteProperty`,
-    {
-      method:'POST',
-      headers:{
-        'content-Type': 'application/json'
-      },
-      body: JSON.stringify({id:id})
-    }
-    )
-    const deleteResponse = await deleteRequest.json()
-    switch (deleteResponse.status) {
-      case 200:
-        Swal.fire(
-          'congrats',
-          'property successfully deleted ',
-          'success'
-        )
-        break;
-    
-      default: Swal.fire(
-        'warning',
-        'something went wrong ',
-        'warning'
-      )
-        break;
-    }
-    fetchData()
-  }
   
-  // post and prperty form state controlers 
+  // post form state controlers 
   const [postEditForm,setPostEditForm] = useState(false)
-  const [propertyEditForm,setPropertyEditForm] = useState(false)
 
   // edit post value state managers 
   const newPostTitle = useRef(null)
   const [newPostBody,setNewPostBody] = useState()
-  const [newPostImage, setNewPostImage] = useState()  
-  const [newPostCategory,setNewPostCategory] = useState('normal')
-
-  // edit property value state managers 
-  const newPropertyLocation = useRef(null)
-  const newPropertyPrice = useRef(null)
-  const [newPropertyDescription,setNewPropertyDescription] = useState()
-  const [newPropertyFrontViewImage,setNewPropertyFrontViewImage] =useState()  
-  const [newPropertySideViewImage,setNewPropertySideViewImage] = useState()
-  const [newPropertyBackViewImage,setNewPropertyBackViewImage] = useState()
-
-  const [activePropertyId, setActivePropertyId] = useState()
-
-  const editProperty = async (e)=>{
-    e.preventDefault()
-    const req = await fetch(`${getBaseApiUrl()}/editProperty`,
-    {
-      method: 'POST',
-      headers :{
-        'content-Type': 'application/json'
-      },
-      body : JSON.stringify({
-        id:activePropertyId,
-        price: newPropertyPrice.current.innerText,
-        description: newPropertyDescription,
-        location: newPropertyLocation.current.innerText,
-        frontViewImage : newPropertyFrontViewImage,
-        sideViewImage : newPropertySideViewImage,
-        backViewImage : newPropertyBackViewImage,
-      })
-    }
-    )
-    const res = req.json()
-    switch (res.status) {
-      case 200:
-        Swal.fire(
-          'congrats',
-          'property successfully updated ',
-          'success'
-        )
-        break;
-    
-      default: Swal.fire(
-        'warning',
-        'something went wrong ',
-        'warning'
-      )
-        break;
-    }
-    fetchData()
-  }
-  const [activeProperty,setActiveProperty] = useState()
   const [activePostId, setActivePostId] = useState()
   const [activePost,setActivePost] = useState()
 
-  // post category state manager
-  const [category,setCategory] = useState([
-    {
-      id:1,
-      title:'normal',
-      active:true,
-    },
-    {
-      id:2,
-      title:'featured',
-      active:false,
-    }
-  ])
- 
-
-  
-  const [fullview, setFullview] = useState()
-  const [sideview, setSideview] = useState()
-  const [backview, setBackview] = useState()
-
-  const uploadPropertyImages = async () =>{
-    setIsLoading(true)
-    const formData = new FormData
-    const backData = new FormData
-    const sideData = new FormData
-    
-    sideData.append('file',sideview)
-    sideData.append('upload_preset','upload');
-
-    backData.append('file',backview)
-    backData.append('upload_preset','upload');
-
-    formData.append('file',fullview)
-    formData.append('upload_preset','upload');
-
-    const [reqFull, reqSide, reqBack] = await Promise.all([ 
-      fetch('https://api.cloudinary.com/v1_1/duesyx3zu/image/upload',
-      {
-      method:'POST',
-      body:formData,
-    }
-    ),
-    fetch('https://api.cloudinary.com/v1_1/duesyx3zu/image/upload',
-      {
-      method:'POST',
-      body:sideData,
-    }
-    ),
-    fetch('https://api.cloudinary.com/v1_1/duesyx3zu/image/upload',
-      {
-      method:'POST',
-      body:backData,
-    }
-    )
-  ])
-    const [fullRes,sideRes,backRes] = await Promise.all([
-      reqFull.json(), reqSide.json(), reqBack.json()
-    ])
-    fullRes && setIsLoading(false)
-    await createProperty(fullRes.secure_url,sideRes.secure_url,backRes.secure_url)
-  }
-
-  // function for creating property 
-  const createProperty = async (full,side,back)=>{
-    const newProperty = {
-      description:`${propertyDescription}`,
-      location:`${propertyLocation}`,
-      price:`${propertyPrice}`,
-      frontViewImage:full,
-      sideViewImage:side,
-      backViewImage:back,
-      type:propertyType,
-    }
-    const request = await fetch(`${getBaseApiUrl()}/createProperty`,
-    {
-      method:'POST',
-      headers:{
-        'content-Type':'application/json',
-      },
-      body: JSON.stringify(newProperty)
-    }
-    )
-    const response = await request.json()
-    switch (response.status) {
-      case 200:
-        Swal.fire(
-          'congrats',
-          'property successfully created ',
-          'success'
-        )
-        break;
-    
-      default: Swal.fire(
-        'warning',
-        'something went wrong ',
-        'warning'
-      )
-        break;
-    }
-    fetchData()
-  }
-  const [propertyTypes,setPropertyTypes] = useState([
-    {
-      id:1,
-      title:'land',
-      active:false,
-    },
-    {
-      id:2,
-      title:'house',
-      active:false,
-    },
-  ])
-
-  const editPost = async (param)=>{
+  const editPost = async ()=>{
     const editedPost={
       title: newPostTitle.current.innerText,
       body: newPostBody,
-      image: param,
     }
-    console.log(editedPost)
 
-    const editRequest = await fetch(`${getBaseApiUrl()}/editPost`,
+    const editRequest = await fetch(`${route}/api/editPost`,
     {
-      method:'POST',
+      method:'PATCH',
       headers:{
         'content-Type': 'application/json'
       },
@@ -388,7 +144,6 @@ const Overview = ({showOverview,showCreateSection,showEditSection,showCreateProp
         id:activePostId,
         title: editedPost.title,
         body:editedPost.body,
-        image:editedPost.image,
       }) 
     }
     )
@@ -413,8 +168,8 @@ const Overview = ({showOverview,showCreateSection,showEditSection,showCreateProp
   }
   const uploadNewPostImage = async ()=>{
     setIsLoading(true)
-    const formData = new FormData
-    formData.append('file',newPostImage)
+    const formData = new FormData()
+    formData.append('file')
     formData.append('upload_preset','upload');
     const req = await fetch('https://api.cloudinary.com/v1_1/duesyx3zu/image/upload',
       {
@@ -427,13 +182,14 @@ const Overview = ({showOverview,showCreateSection,showEditSection,showCreateProp
     console.log(`${res.secure_url} .... upload ran first`)
     await editPost(res.secure_url)
   }
+
+
   return (
     <main className='overview-section'>
       {
-        isLoading && 
-        <div className="loader">
-        </div>
+        isLoading && <Loader />
       }
+
       {
         postEditForm &&
         <section className='post-view-section'>
@@ -445,12 +201,6 @@ const Overview = ({showOverview,showCreateSection,showEditSection,showCreateProp
         </span>
         <form className="create-post-form" onSubmit={async function(e){
           e.preventDefault()
-          if(newPostImage == 'undefined' || null){
-            editPost('')
-          }
-          else{
-            await uploadNewPostImage()
-          }
           }}>
         <div contentEditable='true' ref={newPostTitle} className='edit-input'>{activePost ? activePost.title : 'edit title'}</div>
           <div className="tiptap-container">
@@ -463,31 +213,33 @@ const Overview = ({showOverview,showCreateSection,showEditSection,showCreateProp
         </div>
       </section>
       }
-        {showOverview && 
-          <section className='overview-page'>
-            <div className="overview-card-container">
-              <div className="overview-card">
-                <IoIosCreate className='overview-icon'/>
-                <h1>{posts ? posts.length : 35}</h1>
-                <p>posts created</p>
-              </div>
-              <div className="overview-card">
-                <MdPostAdd  className='overview-icon second'/>
-                <h1>{properties ? properties.length : 30}</h1>
-                <p>properties available</p>
-              </div>
-              <div className="overview-card ">
-                <GiHouseKeys className='overview-icon third'/>
-                <h1>20</h1>
-                <p>properties</p>
-              </div>
+
+      {showOverview && 
+        <section className='overview-page'>
+          <div className="overview-card-container">
+            <div className="overview-card">
+              <IoIosCreate className='overview-icon'/>
+              <h1>{posts ? posts.length : 35}</h1>
+              <p>posts created</p>
             </div>
-          </section>}
-        {showCreateSection && <section className='post-view-section'>
+            <div className="overview-card">
+              <MdPostAdd  className='overview-icon second'/>
+              <h1>{30}</h1>
+              <p>properties available</p>
+            </div>
+            <div className="overview-card ">
+              <GiHouseKeys className='overview-icon third'/>
+              <h1>20</h1>
+              <p>properties</p>
+            </div>
+          </div>
+        </section>}
+      {showCreateSection &&
+        <section className='post-view-section'>
           <div className="form-view">
           <form className="create-post-form" onSubmit={(e)=>{
-            e.preventDefault()
-            uploadFile()
+              e.preventDefault()
+              createPost()
             }}>
             <input type="text" required placeholder='post title'className='input' 
             onChange={(e)=>{
@@ -507,6 +259,7 @@ const Overview = ({showOverview,showCreateSection,showEditSection,showCreateProp
             <input type="submit" value="create post" className='create-btn'/>
           </form>
           </div>
+
           <div className="overview ProseMirror">
             {postTitle && <h1>{postTitle}</h1>}
             {postBody && <div className="post-body">
@@ -514,6 +267,7 @@ const Overview = ({showOverview,showCreateSection,showEditSection,showCreateProp
             </div>}
           </div>
         </section>}
+      
         {showEditSection && 
           <section className='overview-page dashboard-property-list'>
             {
@@ -525,9 +279,6 @@ const Overview = ({showOverview,showCreateSection,showEditSection,showCreateProp
                       setActivePost({
                         title:post.title,
                         body:post.body,
-                        image:post.image,
-                        author:post.author,
-                        category:post.category
                       })
                       setPostEditForm(true)
                       setActivePostId(post._id)
