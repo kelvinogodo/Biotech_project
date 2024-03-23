@@ -324,16 +324,13 @@
     font-family: poppins;
 }
 
-.post-img-container {
-    height: 450px;
-}
-
 .dashboard-property-list {
     width: 100%;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     column-gap: 10px;
     row-gap: 20px;
+    background-color: green;
 }
 
 .post-view-section {
@@ -373,6 +370,8 @@
 
 .edit-card {
     position: relative;
+    height: 100%;
+    background-color: red;
 }
 
 .edit-icon {

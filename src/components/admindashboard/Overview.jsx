@@ -18,8 +18,8 @@ const Overview = ({showOverview,showCreateSection,showEditSection,route}) => {
   // posts state managers 
   const [posts,setPosts]= useState() 
   
-  const fetchData = async ()=>{
-    const [postRequest] = await (
+  const fetchPosts = async ()=>{
+    const postRequest = await (
      fetch(`${route}/api/fetchPosts`))
     const posts = await (
      postRequest.json()) 
@@ -34,12 +34,14 @@ const Overview = ({showOverview,showCreateSection,showEditSection,route}) => {
   //   else{
   //       window.location.href= '/admin'
   //   }
-  // fetchData()
+  // fetchPosts()
   // },[])
+
+  useEffect(() => { fetchPosts() },[posts])
   
   const [postTitle,setPostTitle] = useState()
   const [postBody, setPostBody] = useState()
-  const [postAuthor,setPostAuthor] = useState('ogodo dominic')
+  const [postAuthor,setPostAuthor] = useState('')
   const [postDate,setPostDate] = useState()
 
   // const [uploadImage,setUploadImage] = useState()
@@ -82,10 +84,11 @@ const Overview = ({showOverview,showCreateSection,showEditSection,route}) => {
     })
 
     const res = await req.json()
+    setPosts(res.posts)
     if (res.status == 'ok') {
       console.log('post successfully created')
     }
-    fetchData()
+    fetchPosts()
   }  
 
 // delete post function 
@@ -116,7 +119,7 @@ const Overview = ({showOverview,showCreateSection,showEditSection,route}) => {
       )
         break;
     }
-    fetchData()
+    fetchPosts()
   }
   
   // post form state controlers 
@@ -164,7 +167,7 @@ const Overview = ({showOverview,showCreateSection,showEditSection,route}) => {
       )
         break;
     }
-    fetchData()
+    fetchPosts()
   }
   const uploadNewPostImage = async ()=>{
     setIsLoading(true)
@@ -200,7 +203,8 @@ const Overview = ({showOverview,showCreateSection,showEditSection,route}) => {
             <FaWindowClose />
         </span>
         <form className="create-post-form" onSubmit={async function(e){
-          e.preventDefault()
+                e.preventDefault()
+                editPost()
           }}>
         <div contentEditable='true' ref={newPostTitle} className='edit-input'>{activePost ? activePost.title : 'edit title'}</div>
           <div className="tiptap-container">
