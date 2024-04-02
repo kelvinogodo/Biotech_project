@@ -1,21 +1,30 @@
 import React from 'react'
 import Landpage from '../components/Landpage/Landpage'
-import Why from '../components/why/Why'
 import Service from '../components/service/Service'
-import Plan from '../components/plans/Plan'
 import About from '../components/about/About'
-import Feature from '../components/feature/Feature'
-import Roadmap from '../components/roadmap/Roadmap'
-import Faq from '../components/Faq/Faq'
-import Review from '../components/review/Review'
 import Contact from '../components/contact/Contact'
 import Footer from '../components/footer/Footer'
 import Info from '../components/info/Info'
-const Home = () => {
+import { useEffect, useState } from 'react'
+const Home = ({route}) => {
+
+  const [posts, setPosts] = useState([])
+  
+    const fetchPosts = async ()=>{
+    const postRequest = await (
+     fetch(`${route}/api/fetchPosts`))
+    const posts = await (
+     postRequest.json()) 
+    setPosts(posts)
+  }
+
+  
+
+  useEffect(() => { fetchPosts() },[])
   return (
     <main className='home-img'>
         <Landpage />
-        <Service />
+        <Service posts={posts}/>
         <About />
         <Info />
         <Contact />

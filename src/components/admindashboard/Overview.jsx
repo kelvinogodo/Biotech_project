@@ -9,6 +9,7 @@ import {RiFileEditLine} from 'react-icons/ri'
 import TipTap from './TipTap'
 import parser from 'html-react-parser'
 import Swal from 'sweetalert2'
+import './admindashboard.css'
 import Loader from '../Loader'
 
 
@@ -37,31 +38,12 @@ const Overview = ({showOverview,showCreateSection,showEditSection,route}) => {
   // fetchPosts()
   // },[])
 
-  useEffect(() => { fetchPosts() },[posts])
+  useEffect(() => { fetchPosts() },[])
   
   const [postTitle,setPostTitle] = useState()
   const [postBody, setPostBody] = useState()
   const [postAuthor,setPostAuthor] = useState('')
   const [postDate,setPostDate] = useState()
-
-  // const [uploadImage,setUploadImage] = useState()
-
-  // const uploadFile = async ()=>{
-  //   setIsLoading(true)
-  //   const formData = new FormData()
-  //   formData.append('file',uploadImage)
-  //   formData.append('upload_preset','upload');
-  //   const req = await fetch('https://api.cloudinary.com/v1_1/duesyx3zu/image/upload',
-  //     {
-  //     method:'POST',
-  //     body:formData,
-  //   }
-  //   )
-  //   const res = await req.json()
-  //   res && setIsLoading(false)
-  //   console.log(`${res.secure_url} .... upload ran first`)
-  //   await createPost(res.secure_url)
-  // }
 
   const createPost = async () => {
     
@@ -85,7 +67,7 @@ const Overview = ({showOverview,showCreateSection,showEditSection,route}) => {
 
     const res = await req.json()
     setPosts(res.posts)
-    if (res.status == 'ok') {
+    if (res.status === 'ok') {
       console.log('post successfully created')
     }
     fetchPosts()
@@ -95,7 +77,7 @@ const Overview = ({showOverview,showCreateSection,showEditSection,route}) => {
   const deletePost = async (id)=>{
     const deleteRequest = await fetch(`${route}/api/deletePost`,
     {
-      method:'POST',
+      method:'DELETE',
       headers:{
         'content-Type': 'application/json'
       },
@@ -151,24 +133,16 @@ const Overview = ({showOverview,showCreateSection,showEditSection,route}) => {
     }
     )
     const postResponse = await editRequest.json() 
-    switch (postResponse.status) {
-      case 200:
+    if (postResponse) {
         Swal.fire(
-          'congrats',
-          'post successfully updated ',
-          'success'
-        )
-        break;
-    
-      default: Swal.fire(
-        'warning',
-        'something went wrong ',
-        'warning'
+        'congrats',
+        `post successfully updated`,
+        'success'
       )
-        break;
     }
     fetchPosts()
   }
+
   const uploadNewPostImage = async ()=>{
     setIsLoading(true)
     const formData = new FormData()
@@ -223,18 +197,18 @@ const Overview = ({showOverview,showCreateSection,showEditSection,route}) => {
           <div className="overview-card-container">
             <div className="overview-card">
               <IoIosCreate className='overview-icon'/>
-              <h1>{posts ? posts.length : 35}</h1>
+              <h2>{posts ? posts.length : 0}</h2>
               <p>posts created</p>
             </div>
             <div className="overview-card">
               <MdPostAdd  className='overview-icon second'/>
-              <h1>{30}</h1>
-              <p>properties available</p>
+              <h2>0</h2>
+              <p>active members</p>
             </div>
             <div className="overview-card ">
               <GiHouseKeys className='overview-icon third'/>
-              <h1>20</h1>
-              <p>properties</p>
+              <h2>0</h2>
+              <p>active associates</p>
             </div>
           </div>
         </section>}
@@ -275,7 +249,7 @@ const Overview = ({showOverview,showCreateSection,showEditSection,route}) => {
         {showEditSection && 
           <section className='overview-page dashboard-property-list'>
             {
-              posts ?
+              posts  ?
               posts.map(post =>(
                 <div className='edit-card' key={post._id}>
                   <div className="edit-icon-containers">
@@ -287,7 +261,7 @@ const Overview = ({showOverview,showCreateSection,showEditSection,route}) => {
                       setPostEditForm(true)
                       setActivePostId(post._id)
                     }}/>
-                    <RiDeleteBin2Line className='edit-icon' onClick={()=>{deletePost(post._id)}}/>
+                    <RiDeleteBin2Line className='edit-icon' onClick={()=>deletePost(post._id)}/>
                   </div>
                   <BlogCard item={post} />
                 </div>

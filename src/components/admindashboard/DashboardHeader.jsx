@@ -1,7 +1,8 @@
+import { useNavigate } from 'react-router-dom'
+
 const DashboardHeader = () => {
   const logout = ()=>{
     localStorage.removeItem('user')
-    window.location.href = '/admin'
   }
   return (
     <div className='dashboard-header'>

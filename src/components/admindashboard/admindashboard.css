@@ -1,3 +1,23 @@
+.blog-card-body h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: black;
+    margin-bottom: 0px;
+}
+
+.blog-card-body p {
+    text-transform: lowercase;
+    font-size: 1rem;
+}
+
+.blog-card-body h2 {
+    margin-top: 10px;
+    font-size: 1.2rem;
+    color: black;
+    font-weight: 500;
+    text-indent: 0px;
+}
+
 .dashboard-header {
     width: 100%;
     position: fixed;
@@ -30,16 +50,14 @@
     width: 15%;
     height: 100vh;
     left: 0;
-    top: 0;
+    top: 10%;
     display: flex;
     align-items: center;
     justify-content: flex-start;
     flex-direction: column;
     align-self: flex-start;
     position: sticky;
-    top: 0;
-    left: 0;
-    padding-top: 30px;
+    padding-top:10px;
 }
 
 .tab {
@@ -111,8 +129,7 @@
     flex-direction: column;
 }
 
-.overview-card h1 {
-    line-height: 10px;
+.overview-card h2 {
     color: var(--color-dark);
     font-size: 2rem;
 }
@@ -330,7 +347,6 @@
     grid-template-columns: repeat(2, 1fr);
     column-gap: 10px;
     row-gap: 20px;
-    background-color: green;
 }
 
 .post-view-section {
@@ -367,11 +383,12 @@
 .dash-head-icon-container {
     margin-right: 20px;
 }
-
+.post-card{
+    min-width: 350px
+}
 .edit-card {
     position: relative;
     height: 100%;
-    background-color: red;
 }
 
 .edit-icon {
@@ -379,6 +396,7 @@
     color: red;
     cursor: pointer;
     margin-bottom: 20px;
+    z-index: 2;
 }
 
 .edit-icon-containers {

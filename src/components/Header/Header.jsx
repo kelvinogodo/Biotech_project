@@ -39,11 +39,11 @@ const Header = () => {
                     <span className='line'></span>
                 </li>
                 <li>
-                    <Link to="/faq">news</Link>
+                    <Link to="/news">news</Link>
                     <span className='line'></span>
                 </li>
                 <li>
-                    <Link to="/policy">membership</Link>
+                    <Link to="/membership">membership</Link>
                     <span className='line'></span>
                 </li>
             </ul>
@@ -65,8 +65,8 @@ const Header = () => {
                 <ul>
                     <Link to='/'>home</Link>
                     <Link to='/about'>about</Link>
-                    <Link to='/faq'>news</Link>
-                    <Link to='/policy'>membership</Link>
+                    <Link to='/news'>news</Link>
+                    <Link to='/membership'>membership</Link>
                     <Link to='/signup'>signup</Link>
                     <Link to='/login'>login</Link>
                 </ul>
