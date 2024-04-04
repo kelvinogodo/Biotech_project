@@ -7,7 +7,7 @@ import Footer from '../components/footer/Footer'
 import Info from '../components/info/Info'
 import { useEffect, useState } from 'react'
 const Home = ({route}) => {
-
+  const [loader,setLoader] = useState(true)
   const [posts, setPosts] = useState([])
   
     const fetchPosts = async ()=>{
@@ -15,16 +15,16 @@ const Home = ({route}) => {
      fetch(`${route}/api/fetchPosts`))
     const posts = await (
      postRequest.json()) 
-    setPosts(posts)
+      setPosts(posts)
+      setLoader(false)
   }
 
-  
 
   useEffect(() => { fetchPosts() },[])
   return (
     <main className='home-img'>
         <Landpage />
-        <Service posts={posts}/>
+      <Service posts={posts} loader={loader} />
         <About />
         <Info />
         <Contact />
