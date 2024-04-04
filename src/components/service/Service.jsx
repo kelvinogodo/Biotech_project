@@ -15,7 +15,9 @@ const Service = ({posts, loader}) => {
       <div className="service-card-container">
         {
         loader ? <>
-          <motion.p>fetching...</motion.p>
+          <div class="post-loader"></div>
+          <div class="post-loader"></div>
+          <div class="post-loader"></div>
 
         </> : Array.isArray(posts) && posts.reverse().slice(posts.length - 3, posts.length).map(
           item => <BlogCard key={item._id} item={item}/>
