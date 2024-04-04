@@ -1,6 +1,5 @@
 import React from 'react'
 import './service.css'
-import { Link } from 'react-router-dom'
 import BlogCard from '../admindashboard/BlogCard'
 const Service = ({posts}) => {
   return (

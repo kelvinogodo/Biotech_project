@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link,useNavigate } from 'react-router-dom'
 import { SlPhone } from 'react-icons/sl'
-import {GrUserAdmin} from 'react-icons/gr'
 import {BiUser} from 'react-icons/bi'
 import {BsEye,BsEyeSlash} from 'react-icons/bs'
 import { useState } from 'react'
@@ -11,16 +10,13 @@ const Signup = ({route}) => {
   const navigate = useNavigate()
   const [showPassword, setShowPassword] =  useState(false)
   const [showConfirmPassword, setShowConfirmPassword] =  useState(false)
-  const [firstname,setFirstname] = useState()
-  const [username,setUserName] = useState('')
-  const [country,setCountry] = useState()
-  const [lastname,setLastname] = useState()
+  const [fullname,setFullName] = useState()
+  const [membertype,setmembertype] = useState()
   const [email,setEmail] = useState()
   const [password,setPassword] = useState()
   const [phone,setPhone] = useState()
   const [confirmPassword,setConfirmPassword] = useState()
   const [loader, setLoader] = useState(false)
-  const [referralLink, setReferralLink] = useState()
 
   const Toast = Swal.mixin({
     toast: true,
@@ -38,7 +34,6 @@ const Signup = ({route}) => {
   const Signup = async ()=>{
     setLoader(true)
     if (password === confirmPassword) {
-      const referringUser = localStorage.getItem('referedUser')
           const req = await fetch(`${route}/api/register`, 
         {
           method:"POST",
@@ -46,106 +41,103 @@ const Signup = ({route}) => {
             "Content-Type":"application/json",
           },
           body:JSON.stringify({
-            firstName:firstname,
-            lastName: lastname,
-            userName: username,
+            fullname:fullname,
             password:password,
             email:email,
             phone: phone,
-            country: country,
-            referralLink:referringUser ? referringUser : ''
+            membertype: membertype,
           })
         }
         )
-        const res = await req.json()
+        const res = await req.status()
         setLoader(false)
-        if(res.status === 'ok') { 
+        if(res.status === 200) { 
           localStorage.setItem('token', res.token)
           
-          const userData = {
-            service_id: 'service_2ljiy8n',
-            template_id: 'template_audw0cr',
-            user_id: 'u__c9CcKEVKgaRN5U',
-            template_params: {
-                'name': `${res.name}`,
-                'email': `${res.email}`,
-            }
-          };
+        //   const userData = {
+        //     service_id: 'service_2ljiy8n',
+        //     template_id: 'template_audw0cr',
+        //     user_id: 'u__c9CcKEVKgaRN5U',
+        //     template_params: {
+        //         'name': `${res.name}`,
+        //         'email': `${res.email}`,
+        //     }
+        //   };
 
-          const adminData = {
-            service_id: 'service_2ljiy8n',
-            template_id: 'template_1tx292w',
-            user_id: 'u__c9CcKEVKgaRN5U',
-            template_params: {
-                'name': `jeffery Boss!`,
-                'email': `passiveincominvest@gmail.com`,
-                'message': `${res.message}`,
-                'reply_to': `passiveincominvest@gmail.com`,
-                'subject':`${res.adminSubject}`
-            }
-        };
+        //   const adminData = {
+        //     service_id: 'service_2ljiy8n',
+        //     template_id: 'template_1tx292w',
+        //     user_id: 'u__c9CcKEVKgaRN5U',
+        //     template_params: {
+        //         'name': `jeffery Boss!`,
+        //         'email': `passiveincominvest@gmail.com`,
+        //         'message': `${res.message}`,
+        //         'reply_to': `passiveincominvest@gmail.com`,
+        //         'subject':`${res.adminSubject}`
+        //     }
+        // };
          
-          if (res.referringUser === null) {
-                const sendMail= async()=>{
-                await Promise.all([
-                await fetch('https://api.emailjs.com/api/v1.0/email/send', {
-                method: 'POST',
-                headers:{
-                  'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(userData), 
-                }),
-                await fetch('https://api.emailjs.com/api/v1.0/email/send', {
-                method: 'POST',
-                headers:{
-                  'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(adminData), 
-              })
-              ])
-            }
-            sendMail()
-          }
-          else {
-            const referringUserData = {
-            service_id: 'service_2ljiy8n',
-            template_id: 'template_1tx292w',
-            user_id: 'u__c9CcKEVKgaRN5U',
-            template_params: {
-                'name': `${res.referringUserName}`,
-                'email': `${res.referringUserEmail}`,
-                'message': `${res.referringUserMessage}`,
-                'reply_to': `passiveincominvest@gmail.com`,
-                'subject':`${res.subject}`
-            }
-            };
-            const sendMail= async()=>{
-              await Promise.all([
-              await fetch('https://api.emailjs.com/api/v1.0/email/send', {
-              method: 'POST',
-              headers:{
-                'Content-Type': 'application/json'
-              },
-              body: JSON.stringify(userData), 
-              }),
-              await fetch('https://api.emailjs.com/api/v1.0/email/send', {
-              method: 'POST',
-              headers:{
-                'Content-Type': 'application/json'
-              },
-              body: JSON.stringify(referringUserData), 
-              }),
-              await fetch('https://api.emailjs.com/api/v1.0/email/send', {
-              method: 'POST',
-              headers:{
-                'Content-Type': 'application/json'
-              },
-              body: JSON.stringify(adminData), 
-            })
-            ])
-            }
-            sendMail()
-        }
+        //   if (res.referringUser === null) {
+        //         const sendMail= async()=>{
+        //         await Promise.all([
+        //         await fetch('https://api.emailjs.com/api/v1.0/email/send', {
+        //         method: 'POST',
+        //         headers:{
+        //           'Content-Type': 'application/json'
+        //         },
+        //         body: JSON.stringify(userData), 
+        //         }),
+        //         await fetch('https://api.emailjs.com/api/v1.0/email/send', {
+        //         method: 'POST',
+        //         headers:{
+        //           'Content-Type': 'application/json'
+        //         },
+        //         body: JSON.stringify(adminData), 
+        //       })
+        //       ])
+        //     }
+        //     sendMail()
+        //   }
+        //   else {
+        //     const referringUserData = {
+        //     service_id: 'service_2ljiy8n',
+        //     template_id: 'template_1tx292w',
+        //     user_id: 'u__c9CcKEVKgaRN5U',
+        //     template_params: {
+        //         'name': `${res.referringUserName}`,
+        //         'email': `${res.referringUserEmail}`,
+        //         'message': `${res.referringUserMessage}`,
+        //         'reply_to': `passiveincominvest@gmail.com`,
+        //         'subject':`${res.subject}`
+        //     }
+        //     };
+        //     const sendMail= async()=>{
+        //       await Promise.all([
+        //       await fetch('https://api.emailjs.com/api/v1.0/email/send', {
+        //       method: 'POST',
+        //       headers:{
+        //         'Content-Type': 'application/json'
+        //       },
+        //       body: JSON.stringify(userData), 
+        //       }),
+        //       await fetch('https://api.emailjs.com/api/v1.0/email/send', {
+        //       method: 'POST',
+        //       headers:{
+        //         'Content-Type': 'application/json'
+        //       },
+        //       body: JSON.stringify(referringUserData), 
+        //       }),
+        //       await fetch('https://api.emailjs.com/api/v1.0/email/send', {
+        //       method: 'POST',
+        //       headers:{
+        //         'Content-Type': 'application/json'
+        //       },
+        //       body: JSON.stringify(adminData), 
+        //     })
+        //     ])
+        //     }
+        //     sendMail()
+        // }
         Toast.fire({
         icon: 'success',
         title: 'Account successfully created!'
@@ -153,13 +145,10 @@ const Signup = ({route}) => {
           
         setConfirmPassword('')
         setEmail('')
-        setFirstname('')
-        setLastname('')
+        setFullName('')
         setPassword('')
-        setCountry('')
+        setmembertype('')
         setPhone('')
-        setUserName('')
-        localStorage.removeItem('referedUser')
         navigate('/dashboard')
       }
       else if(res.status === true){ Toast.fire({
@@ -176,14 +165,14 @@ const Signup = ({route}) => {
       }
     }
     
- const countries = [
+ const membertypes = [
     "member",
     "fellow",
 ]
 
 
     const handleChange = (event) => {
-      setCountry(event.target.value.trim());
+      setmembertype(event.target.value.trim());
     };
 
   return (
@@ -207,8 +196,8 @@ const Signup = ({route}) => {
                 <BiUser/>
                 </span>
                 <input onChange={(e)=>{
-                        setFirstname(e.target.value.trim())
-                      }} value={firstname} placeholder="john" title="Inpit title" name="input-name" type="text" class="input_field" id="email_field" required/>
+                        setFullName(e.target.value.trim())
+                      }} value={fullname} placeholder="john" title="Inpit title" name="input-name" type="text" class="input_field" id="email_field" required/>
               </div>
               <div class="input_containers">
                 <label class="input_labels" for="email_field">Email</label>
@@ -230,15 +219,15 @@ const Signup = ({route}) => {
                       }} value={phone} placeholder="+44" title="Inpit title" name="input-name" type="tel" class="input_field" id="phone_field" required/>
           </div>
             <div class="input_containers">
-                <label class="input_labels" for="country_field">country</label>
+                <label class="input_labels" for="membertype_field">membertype</label>
                 <span className="icont">
                   <BiUser />
                 </span>
-                <select value={country} onChange={handleChange} className="input_field" required>
+                <select value={membertypes} onChange={handleChange} className="input_field" required>
                   <option value="">-- Select a membership type --</option>
-                  {countries.map((country) => (
-                    <option key={country} value={country}>
-                      {country}
+                  {membertypes.map((membertype) => (
+                    <option key={membertype} value={membertype}>
+                      {membertype}
                     </option>
                   ))}
                 </select>

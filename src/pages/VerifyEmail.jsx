@@ -29,18 +29,19 @@ const VerifyEmail = ({route}) => {
                     console.log(error)
                     setLoader(false)
                 }
-            }
-            fetchPost()
-    },[params])
+        }
+
+        fetchPost()
+    }, [params])
+        console.log(post)
     return (
     <>
         {
-            
-           loader && <Loader />
-            }
-            <main>
-                <p>posts fetching...</p>
-            </main>
+            loader && <Loader />
+        }
+        <main>
+            <p>posts fetching...</p>
+        </main>
     </>    
   )
 }

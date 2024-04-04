@@ -1,5 +1,6 @@
 import React from 'react'
-import {motion} from 'framer-motion'
+import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
 import {AiTwotoneCalendar} from 'react-icons/ai'
 import './admindashboard.css'
 import Parser from 'html-react-parser'
@@ -12,7 +13,7 @@ const BlogCard = ({item}) => {
                   <small>{item.date}</small>
                   <h3>{item.title}</h3>
                   <p>{splitBody}...</p>
-        <a href={`/posts/${item._id}`}>read more</a>
+        <Link to={`/posts/${item._id}`}>read more</Link>
               </div>
     </motion.div>
   )
