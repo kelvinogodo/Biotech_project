@@ -47,20 +47,23 @@ const VerifyEmail = ({route}) => {
       <><Header />
      
       <section className="blog-header">
-        <Link to='/news'>news</Link>
-        <span>/</span>
-        <Link to='/'> home</Link>
+        <div>
+          <Link to='/news'>news</Link>
+            <span>/</span>
+          <Link to='/'> home</Link>
+        </div>    
       </section>
       <section className="post-container">
         <div className="post-text-container">
-          <span className="post-date-container">
-            <p> {post ? post.date : ''}</p>
-          </span>
-          <p>Author : {post ? post.author : ''}</p>
+          
           <h1>{post ? post.title : ''}</h1>
           <div className="ProseMirror my-post-body">
             {parse(post ? post.body : '')}
           </div>
+          <span className="post-date-container">
+            <p> {post ? post.date : ''}</p>
+          </span>
+          <p>written by {post ? post.author : 'Auditor'}</p>
         </div>
             </section>
           
