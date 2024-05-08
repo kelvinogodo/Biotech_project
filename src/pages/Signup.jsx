@@ -10,7 +10,8 @@ const Signup = ({route}) => {
   const navigate = useNavigate()
   const [showPassword, setShowPassword] =  useState(false)
   const [showConfirmPassword, setShowConfirmPassword] =  useState(false)
-  const [fullname,setFullName] = useState()
+  const [firstname,setFirstName] = useState()
+  const [lastname,setLastName] = useState()
   const [membertype,setmembertype] = useState()
   const [email,setEmail] = useState()
   const [password,setPassword] = useState()
@@ -41,7 +42,8 @@ const Signup = ({route}) => {
             "Content-Type":"application/json",
           },
           body:JSON.stringify({
-            fullname:fullname,
+            firstname: firstname,
+            lastname:lastname,
             password:password,
             email:email,
             phone: phone,
@@ -145,7 +147,8 @@ const Signup = ({route}) => {
           
         setConfirmPassword('')
         setEmail('')
-        setFullName('')
+        setFirstName('')
+        setLastName('')
         setPassword('')
         setmembertype('')
         setPhone('')
@@ -196,8 +199,17 @@ const Signup = ({route}) => {
                 <BiUser/>
                 </span>
                 <input onChange={(e)=>{
-                        setFullName(e.target.value.trim())
-                      }} value={fullname} placeholder="john" title="Inpit title" name="input-name" type="text" class="input_field" id="email_field" required/>
+                        setFirstName(e.target.value.trim())
+                      }} value={firstname} placeholder="john" title="Inpit title" name="input-name" type="text" class="input_field" id="email_field" required/>
+              </div>
+              <div class="input_containers">
+                <label class="input_labels" for="email_field">Firstname</label>
+                <span className="icont">
+                <BiUser/>
+                </span>
+                <input onChange={(e)=>{
+                        setLastName(e.target.value.trim())
+                      }} value={lastname} placeholder="Doe" title="Inpit title" name="input-name" type="text" class="input_field" id="email_field" required/>
               </div>
               <div class="input_containers">
                 <label class="input_labels" for="email_field">Email</label>

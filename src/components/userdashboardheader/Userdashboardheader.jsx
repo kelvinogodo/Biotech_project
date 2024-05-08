@@ -73,42 +73,12 @@ const Userdashboardheader = ({route}) => {
                         <p className='dropdown-email'>{userData ? userData.email : 'kelvinchukwuebuka385#gmail.com'}</p>
                     </span>
                 </div>
-                
-                <div className="dropdown-deposit-container">
-                    <h3>total amount</h3>
-                    <h2>${userData ? userData.funded : ''} USD</h2>
-                    <p>referral bonus ${userData ? userData.refBonus : ''} USD</p>
-                </div>
                 <div className="mobile-tabs">
                 <div className="dropdown-tabs" onClick={()=>{
                     navigate('/dashboard')
                 }}>
                     <RxDashboard />
                     <p>dashboard</p>
-                </div>
-                <div className="dropdown-tabs" onClick={()=>{
-                    navigate('/fundwallet')
-                }}>
-                    <GiReceiveMoney />
-                    <p>deposit</p>
-                </div>
-                <div className="dropdown-tabs" onClick={()=>{
-                    navigate('/plans')
-                }}>
-                    <AiOutlineStock />
-                    <p>select plan</p>
-                </div>
-                <div className="dropdown-tabs" onClick={()=>{
-                    navigate('/withdraw')
-                }}>
-                    <RiLuggageDepositLine />
-                    <p>withdraw</p>
-                </div>
-                <div className="dropdown-tabs" onClick={()=>{
-                    navigate('/referrals')
-                }}>
-                    <FaUserFriends />
-                    <p>referral</p>
                 </div>
                 </div>
                 <div className="dropdown-tabs" onClick={()=>{
@@ -135,12 +105,9 @@ const Userdashboardheader = ({route}) => {
         }
         <div  className={`userdashboard-header ${bgColor && 'scroll-head'}`}>
             <div className="userdashboard-logo-container">
-                <img src="/20230608_063112.png" alt="" className='logo' onClick={()=>{
-                    navigate('/')
-                }}/>
             </div>
             <nav className='user-header-nav'>
-                <ul>
+                {/* <ul>
                     <li>
                         <Link to='/dashboard'>dashboard</Link>
                     </li>
@@ -150,23 +117,7 @@ const Userdashboardheader = ({route}) => {
                     <li>
                         <Link to='/plans'>invest</Link>
                     </li>
-                    <li>
-                        <Link to='/withdraw'>withdrawals</Link>
-                    </li>
-                    <li>
-                        <Link to='/transactions'>transactions</Link>
-                    </li>
-                    <li>
-                        <Link to='/referrals'>referrals</Link>
-                    </li>
-                    {
-                        userData && userData.promo ? 
-                        <li>
-                             <Link to='/viplan'>vip plan</Link>
-                        </li>
-                        : ''
-                    }
-                </ul>
+                </ul> */}
             </nav>
             <div className="header-profile-container" onClick={()=>{
                 setDropDown(true)

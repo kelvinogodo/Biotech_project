@@ -45,20 +45,16 @@ const Userdashboardhomepage = ({route}) => {
         loader &&
           <div className="wifi-loader-container">
             <div class="loader">
-              <span class="l">p</span>
-              <span class="o">a</span>
-              <span class="a">s</span>
-              <span class="d">s</span>
-              <span class="i">i</span>
-              <span class="n">v</span>
-              <span class="g">e</span>
-              <span class="d1"> </span>
-              <span class="d2">I</span>
-              <span class="d3">n</span>
-              <span class="d4">c</span>
-              <span class="d5">o</span>
-              <span class="d6">m</span>
-              <span class="d7">e</span>
+              <span class="l">B</span>
+              <span class="o">i</span>
+              <span class="a">o</span>
+              <span class="d">m</span>
+              <span class="i">e</span>
+              <span class="n">d</span>
+              <span class="g">i</span>
+              <span class="d1">c </span>
+              <span class="d2">a</span>
+              <span class="d3">l</span>
             </div>
         </div>
       }
@@ -68,122 +64,33 @@ const Userdashboardhomepage = ({route}) => {
             <div className="welcome-kyc-section">
                 <p>welcome!</p>
                 <div className="username-container">
-                    <h2>{userData ? userData.firstname : ''}</h2>
-                    <button className="active-investment-btn" onClick={()=>{
-                        navigate('/investments')
-                    }}>
-                        active investment
-                        <BsArrowRightShort />
-                    </button>
+                    <h2>{userData ? `${userData.firstname} ${userData.lastname}` : ''}</h2>
                 </div>
             </div>
             <div className="overview-container">
                 <div className="overview-card">
                     <div className="amount-header">
-                        <h2>Total Deposit</h2>
+                        {/* <h2>membership type</h2> */}
                         <div className="amount-holder">
-                            <h3>$ {userData && userData.totaldeposit !== undefined ? userData.totaldeposit : ''}.00 USD</h3>
-                            <span className="arrow-p">
-                                <p>1.93%</p>
-                                <IoIosArrowRoundUp />
-                            </span>
+                            {/* <h3>$ {userData && userData.totaldeposit !== undefined ? userData.totaldeposit : ''}.00 USD</h3> */}
                         </div>
                     </div>
-                    <div className="amount-pouches">
-                        <h2>current deposit</h2>
-                        <h3>${userData && userData.deposit.length !== 0 ? userData.deposit[userData.deposit.length - 1].amount : 0}.00 USD</h3>
-                    </div>
-                    <div className="amount-pouches">
-                        <h2>invested</h2>
-                        <h3>$ {userData && userData.invest.length !== 0 ? userData.invest[userData.invest.length - 1].amount : 0}.00 USD</h3>
-                    </div>
-                    <img src="/bar.png" alt="" className="bar"/>
                 </div>
                 <div className="overview-card">
                 <div className="amount-header">
-                        <h2>Total Withdraw</h2>
+                        {/* <h2>current level</h2> */}
                         <div className="amount-holder">
-                            <h3>${userData ? userData.totalwithdraw : ''}.00 USD </h3>
-                            <span className="red">
-                                <p>1.93%</p>
-                                <IoIosArrowRoundDown />
-                            </span>
+                            {/* <h3>${userData ? userData.totalwithdraw : ''}.00 USD </h3> */}
                         </div>
                     </div>
-                    <div className="amount-pouches">
-                        <h2>interest earned</h2>
-                        <h3>${userData ? userData.periodicProfit : '0'}.00 USD</h3>
-                    </div>
-                    <div className="amount-pouches">
-                        <h2>referral commission</h2>
-                        <h3>${userData ? userData.refBonus : '0'}.00 USD</h3>
-                    </div>
-                    <img src="/bar2.png" alt="" className="bar" />
                 </div>
                 <div className="overview-card">
                 <div className="amount-header">
-                        <h2>Balance in Account</h2>
+                        {/* <h2>ranking status</h2> */}
                         <div className="amount-holder">
-                            <h3>${userData ? userData.funded : ''}.00 USD </h3>
-                            
+                            {/* <h3>${userData ? userData.funded : ''}.00 USD </h3> */}  
                         </div>
                     </div>
-                    <div className="amount-pouches">
-                        <h2>from deposits</h2>
-                        <h3>${userData ? userData.totaldeposit : ''}.00 USD</h3>
-                    </div>
-                    <div className="amount-pouches">
-                        <h2>withdrawable profit after duration</h2>
-                        <h3>${userData ? userData.totalprofit + userData.refBonus : ''}.00 USD</h3>
-                    </div>
-                    <img src="/bar3.png" alt="" className="bar" />
-                </div>
-            </div>
-            <div className="price-chartt-section">
-                <iframe src="https://widget.coinlib.io/widget?type=chart&theme=light&coin_id=859&pref_coin_id=1505" style={{width:"100%",height:"536px",scrolling:"none",marginWidth:"0",marginHeight:"0", frameBorder:"0", border:"0",lineHeight: '14px'}}></iframe>
-            </div>
-            <div className="referral-section">
-                <div className="referral-card1">
-                    <div className="referraltext-wrapper">
-                        <div className="referral-text-container">
-                            <h2>refer us and earn 10% of every downline deposit</h2>
-                            <p>Use the bellow link to invite your friends.</p>
-                        </div>
-                        <button className="invite-btn">invite</button>
-                    </div>
-                    <div className="click-to-copy-container">
-                        <span className='clipboard-btn'>
-                            <FiLink />
-                        </span>
-                        <input type="text" value={userData ? `passiveincomeinvest.org/user/${userData.username ? userData.username : userData.referral}` : ''} ref={clipRef}/>
-                        <span className={`clipboard-btn ${clipBoard ? <MdOutlineDone /> : ''}` } onClick={()=>{
-                            copy()
-                            setClipBoard(!clipBoard)
-                              }}>
-                                  
-                            {
-                                clipBoard ?
-                                <MdOutlineDone /> : <MdOutlineContentCopy />
-                            }
-                        </span>
-                    </div>  
-                </div>
-                <div className="referral-card1">
-                    <div className="referraltext-wrapper">
-                        <div className="referral-text-container">
-                            <h2>my referral</h2>
-                        </div>
-                        <div className="referral-text-container small-card">
-                            <h2>{userData ? userData.referred.length : '        '}</h2>
-                            <p>referred users</p>
-                        </div>
-                        <div className="referral-text-container small-card">
-                            <h2>{userData ? userData.refBonus : '        '} USD</h2>
-                            <p>referral commission</p>
-                        </div>
-
-                    </div>
-                    <img src="/bar4.png" alt="" className="bar4" />
                 </div>
             </div>
         </div>
