@@ -1,11 +1,10 @@
 import React from 'react'
-import Header from '../components/Header/Header'
 import Footer from '../components/footer/Footer'
-import '../'
+import Header from '../components/Header/Header'
 import Contact from '../components/contact/Contact'
-const Policy = () => {
-  return (
-    <main className='gold-page'>
+
+const Association = () => {
+  return (<>
     <Header />
       <div className="policy-container">
         <div className="policy-text-container">
@@ -17,8 +16,8 @@ const Policy = () => {
       </div>
       <Contact />
       <Footer />
-    </main>
+      </>
   )
 }
 
-export default Policy
+export default Association

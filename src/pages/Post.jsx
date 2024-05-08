@@ -1,14 +1,17 @@
 import React from 'react'
 import { useState,useEffect } from 'react'
-import { useParams, useNavigate } from 'react-router-dom'
+import { useParams} from 'react-router-dom'
+import Header from '../components/Header/Header'
+import Contact from '../components/contact/Contact'
 import parse from 'html-react-parser'
 import {Link} from 'react-router-dom'
 import Loader from '../components/Loader'
+import Footer from '../components/footer/Footer'
 const VerifyEmail = ({route}) => {
     const [loader, setLoader] = useState(true)
     const [post,setPost] = useState()
-    const params = useParams()
-    const navigate = useNavigate()
+  const params = useParams()
+  const [errorPage,showErorPage] = useState(false)
     useEffect(() => {
                     setLoader(true)
                     const fetchPost = async()=>{
@@ -21,11 +24,11 @@ const VerifyEmail = ({route}) => {
                         })
                         const res = await req.json()
                         setLoader(false)
-                        if (res.status === 404) {
-                            navigate('/')
+                        if (res.status != 200) {
+                            showErorPage(true)
                         }
                         else {
-                            setPost(res.post)
+                          setPost(res.post)
                        }
                     } catch (error) {
                     console.log(error)
@@ -36,11 +39,13 @@ const VerifyEmail = ({route}) => {
         fetchPost()
     }, [params])
     return (
-    <>
+      <>
+         <main className='page-container'>
         {
             loader && <Loader />
         }
-        <main className='page-container'>
+      <><Header />
+     
       <section className="blog-header">
         <Link to='/news'>news</Link>
         <span>/</span>
@@ -57,9 +62,14 @@ const VerifyEmail = ({route}) => {
             {parse(post ? post.body : '')}
           </div>
         </div>
-      </section>
-    </main>
-    </>    
+            </section>
+          
+          </>
+          <Contact />
+          <Footer />
+        </main>
+      </>    
+      
   )
 }
 

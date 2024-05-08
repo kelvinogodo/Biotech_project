@@ -49,10 +49,10 @@ const Signup = ({route}) => {
           })
         }
         )
-        const res = await req.status()
+        const res = await req.json()
         setLoader(false)
         if(res.status === 200) { 
-          localStorage.setItem('token', res.token)
+          // localStorage.setItem('token', res.token)
           
         //   const userData = {
         //     service_id: 'service_2ljiy8n',
@@ -223,7 +223,7 @@ const Signup = ({route}) => {
                 <span className="icont">
                   <BiUser />
                 </span>
-                <select value={membertypes} onChange={handleChange} className="input_field" required>
+                <select value={membertype} onChange={handleChange} className="input_field" required>
                   <option value="">-- Select a membership type --</option>
                   {membertypes.map((membertype) => (
                     <option key={membertype} value={membertype}>

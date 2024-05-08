@@ -1,6 +1,5 @@
 import './App.css';
-import {IoLogoWhatsapp} from 'react-icons/io'
-import { Profiler, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { motion,AnimatePresence } from 'framer-motion';
 import { BrowserRouter as Router,Routes, Route } from 'react-router-dom';
 import Login from './pages/Login'
@@ -17,17 +16,33 @@ import Userdashboardplans from './components/userdashboardplans/Userdashboardpla
 import Userdashboardtransactions from './components/userdashboardtransactions/Userdashboardtransactions';
 import Investments from './components/invesments/Investments';
 import Profile from './components/profile/Profile'
-import VerifyEmail from './pages/VerifyEmail';
+import Post from './pages/Post';
 import WithdrawalLogs from './components/WithdrawalLogs';
 import Checkout from './components/Checkout';
 import Admindashboard from './components/admindashboard/Admindashboard';
 import Deposit from './components/deposit/Deposit';
 import Aboutpage from './pages/Aboutpage';
-import Faq from './pages/Faq';
-import Policy from './pages/Policy';
+import News from './pages/News';
+import Membership from './pages/Membership';
+import Epoch from './pages/Epoch';
+import Category from './pages/Category';
+import Cbet from './pages/cibet/Cbet'
+import Association from './pages/Association';
+import Online from './pages/Online';
 function App() {
-
-    useEffect(() => {
+  const [loader,setLoader] = useState(true)
+  const [posts, setPosts] = useState([])
+  
+    const fetchPosts = async ()=>{
+    const postRequest = await (
+     fetch(`${route}/api/fetchPosts`))
+    const posts = await (
+     postRequest.json()) 
+      setPosts(posts)
+      setLoader(false)
+  }
+  useEffect(() => {
+    fetchPosts()
     AOS.init({
       offset: 60,
       duration: 500,
@@ -52,7 +67,7 @@ function App() {
   
   return (
     <>
-    <AnimatePresence exitBeforeEnter>
+    <AnimatePresence>
         <Router>
         <motion.div className="App"
         key={Routes.Route}
@@ -73,7 +88,7 @@ function App() {
         }}
         >
           <Routes>
-            <Route path='/' element={<Home route={route}/>}/>
+              <Route path='/' element={<Home route={route} posts={posts} loader={ loader} />}/>
             <Route path='/login' element={<Login route={route}/>}/>
             <Route path='/signup' element={<Signup route={route}/>}/>
             <Route path='/dashboard' element={<Userdashboard route={route}/>}/>
@@ -84,14 +99,19 @@ function App() {
             <Route path='/transactions' element={<Userdashboardtransactions route={route}/>}/>
             <Route path='/investments' element={<Investments route={route}/>}/>
             <Route path='/myprofile' element={<Profile route={route}/>}/>
-            <Route path='/posts/:id' element={<VerifyEmail route={route}/>}/>
+            <Route path='/posts/:id' element={<Post route={route}/>}/>
             <Route path='/withdrawlogs' element={<WithdrawalLogs route={route}/>}/>
             <Route path='/checkout' element={<Checkout route={route}/>}/>
             <Route path='/admin' element={<Admindashboard route={route}/>}/>
             <Route path='/deposit' element={<Deposit route={route}/>}/>
             <Route path='/about' element={<Aboutpage />}/>
-            <Route path='/news' element={<Faq />}/>
-            <Route path='/membership' element={<Policy />}/>
+            <Route path='/cbet' element={<Cbet />}/>
+            <Route path='/news' element={<News posts={posts} loader={ loader}/>}/>
+            <Route path='/membership' element={<Membership />}/>
+            <Route path='/fnibe' element={<Epoch />}/>
+            <Route path='/onlinecourse' element={<Online />}/>
+            <Route path='/categories' element={<Category />}/>
+            <Route path='/association' element={<Association />}/>
           </Routes>
         </motion.div>
       </Router>

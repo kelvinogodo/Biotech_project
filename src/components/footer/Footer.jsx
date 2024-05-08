@@ -12,18 +12,17 @@ const Footer = () => {
                 <div className="quicklink-card" data-aos="fade-up">
                     <Link to='/'>home</Link>
                       <Link to="/about">about</Link>
-                      <Link to="/faq">post</Link>
-                      <Link to="/faq">events</Link>
+                      <Link to="/news">post</Link>
+                      <Link to="/news">events</Link>
                 </div>
                 <div className="quicklink-card" data-aos="fade-up">
-                      <Link to="/faq">College of Biomedical Engineering & Technology</Link>
-                      <Link to="/about">Association of Biomedical Engineers & Technologists of Nigeria</Link>
-                    <Link to="/buybitcoin">memebership</Link>
+                      <Link to="/cbet">College of Biomedical Engineering & Technology</Link>
+                      <a href="https://www.nabet.org.ng/">Association of Biomedical Engineers & Technologists of Nigeria</a>
+                    <Link to="/membership">memebership</Link>
                 </div>
                   <div className="quicklink-card" data-aos="fade-up">
-                      <Link to="/faq">categories of individual membership of the College</Link>
-                      <Link to="/about">epoch-making procession of the first set of Fellows of the College of Biomedical Engineering and Technology.</Link>
-                      <Link to="/buybitcoin">news@nibe</Link>
+                      <Link to="/categories">categories of individual membership of the College</Link>
+                      <Link to="/fnibe">epoch-making procession of the first set of Fellows of the College of Biomedical Engineering and Technology.</Link>
                 </div>
             </div>
             <div className="copyright-container">

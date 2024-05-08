@@ -43,6 +43,10 @@ const Header = () => {
                     <span className='line'></span>
                 </li>
                 <li>
+                    <Link to="/cbet">CBET</Link>
+                    <span className='line'></span>
+                </li>
+                <li>
                     <Link to="/membership">membership</Link>
                     <span className='line'></span>
                 </li>

@@ -1,9 +1,14 @@
 import React from 'react'
-import './service.css'
-import BlogCard from '../admindashboard/BlogCard'
-const Service = ({posts, loader}) => {
+import Header from '../components/Header/Header'
+import Footer from '../components/footer/Footer'
+import Contact from '../components/contact/Contact'
+import BlogCard from '../components/admindashboard/BlogCard'
+const News = ({ posts, loader }) => {
   return (
-      <section className='service-section'>
+    <main className='news-page'>
+      <Header />
+      <section className="post-section">
+        <section className='service-section'>
           <div className="why-choose-us-text-container">
             <div className="header" data-aos="fade-up">
                 <span className="header-line"></span>
@@ -18,12 +23,16 @@ const Service = ({posts, loader}) => {
           <div class="post-loader"></div>
           <div class="post-loader"></div>
 
-        </> : Array.isArray(posts) && posts.reverse().slice(posts.length - 3, posts.length).map(
+        </> : Array.isArray(posts) && posts.map(
           item => <BlogCard key={item._id} item={item}/>
         )}
           </div>
-    </section>
+        </section>
+      </section>
+      <Contact />
+      <Footer />
+    </main>
   )
 }
 
-export default Service
+export default News

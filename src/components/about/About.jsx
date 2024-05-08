@@ -13,7 +13,7 @@ const About = () => {
             </div>
             <h1 data-aos="fade-up">Nigerian Institute for Biomedical Engineering</h1>
             <p data-aos="fade-up">
-                The Nigerian Institute for Biomedical Engineering, NIBE is a non-governmental organisation representing the biomedical engineering and technology profession and its members in Nigeria and in international organisations, having members numbering over 5,000, from the clinical setting, academia, industry, research and training, and the government.<br/> NIBE was established in 1999 with the vision Ã¢â‚¬Å“to develop and advance the biomedical science, health and human well-being of Nigeria through modern technological approaches comparable to those obtainable in any developed country of the worldÃ¢â‚¬Â.
+                The Nigerian Institute for Biomedical Engineering, NIBE is a non-governmental organisation representing the biomedical engineering and technology profession and its members in Nigeria and in international organisations, having members numbering over 5,000, from the clinical setting, academia, industry, research and training, and the government.<br/> NIBE was established in 1999 with the vision to develop and advance the biomedical science, health and human well-being of Nigeria through modern technological approaches comparable to those obtainable in any developed country of the world.
             </p>
             <button className='launch-btn launch' data-aos="fade-up" onClick={()=>{
                 navigate('/about')

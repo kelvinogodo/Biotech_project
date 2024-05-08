@@ -42,8 +42,9 @@ const Overview = ({showOverview,showCreateSection,showEditSection,route}) => {
   
   const [postTitle,setPostTitle] = useState()
   const [postBody, setPostBody] = useState()
-  const [postAuthor,setPostAuthor] = useState('')
+  const [postAuthor,setPostAuthor] = useState('Auditor')
   const [postDate,setPostDate] = useState()
+  const [postUrl,setPosturl] = useState()
 
   const createPost = async () => {
     
@@ -54,7 +55,8 @@ const Overview = ({showOverview,showCreateSection,showEditSection,route}) => {
       title:`${postTitle}`,
       body:`${postBody}`,
       author:`${postAuthor}`,
-      date:`${date}`,
+      date: `${date}`,
+      url:`${postUrl}`
     }
 
     const req = await fetch(`${route}/api/createPost`, {
@@ -112,11 +114,13 @@ const Overview = ({showOverview,showCreateSection,showEditSection,route}) => {
   const [newPostBody,setNewPostBody] = useState()
   const [activePostId, setActivePostId] = useState()
   const [activePost,setActivePost] = useState()
+  const newUrl= useRef(null)
 
   const editPost = async ()=>{
     const editedPost={
       title: newPostTitle.current.innerText,
       body: newPostBody,
+      url: newUrl
     }
 
     const editRequest = await fetch(`${route}/api/editPost`,
@@ -128,7 +132,8 @@ const Overview = ({showOverview,showCreateSection,showEditSection,route}) => {
       body:JSON.stringify({
         id:activePostId,
         title: editedPost.title,
-        body:editedPost.body,
+        body: editedPost.body,
+        url:editedPost.url
       }) 
     }
     )
@@ -184,6 +189,7 @@ const Overview = ({showOverview,showCreateSection,showEditSection,route}) => {
           <div className="tiptap-container">
             <TipTap setPostBody={setNewPostBody} body={activePost ? activePost.body : 'edit body'}/>
           </div>
+          <div contentEditable='true' ref={newUrl} className='edit-input'>{activePost && activePost.url}</div>
           <input type="submit" value="publish" className='create-btn'/>
         </form>
         </div>
@@ -232,7 +238,13 @@ const Overview = ({showOverview,showCreateSection,showEditSection,route}) => {
               onChange={(e)=>{
                 const author = e.target.value.toString()
                 setPostAuthor(author)
-              }} required
+              }}
+              />
+              <input type="text" placeholder='external url'className='input' 
+            onChange={(e)=>{
+              const url = e.target.value.toString()
+              setPosturl(url)
+            }}
             />
             <input type="submit" value="create post" className='create-btn'/>
           </form>

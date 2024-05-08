@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import './admindashboard.css'
 import Parser from 'html-react-parser'
 const BlogCard = ({item}) => {
@@ -11,7 +10,7 @@ const BlogCard = ({item}) => {
                   <small>{item.date}</small>
                   <h3>{item.title}</h3>
                   <p>{splitBody}...</p>
-        <Link to={`/posts/${item._id}`}>read more</Link>
+                  <a href={item.url != 'undefined' ? `https://${item.url}`:`/posts/${item._id}`}>read more</a>
               </div>
     </div>
   )

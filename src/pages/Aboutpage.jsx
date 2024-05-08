@@ -1,18 +1,16 @@
 import React from 'react'
 import './page.css'
 import Header from '../components/Header/Header'
-import About from '../components/about/About'
 import Footer from '../components/footer/Footer'
-import Asset from './Asset'
 import Contact from '../components/contact/Contact'
-import Faqcard from './Faqcard'
+import {Link} from 'react-router-dom'
 const Aboutpage = () => {
   return (
     <main className='gold-page'>
     <Header />
       <section className='about-landpage'>
         <div className="about-page-text">
-          <h3>about Nigerian Institute For Biomedical Engineering</h3>
+          <h3>About Nigerian Institute For Biomedical Engineering</h3>
           <span className="small-thin-line"></span>
         </div>
       </section>
@@ -24,7 +22,7 @@ const Aboutpage = () => {
           </h2>
           <p>The Nigerian Institute for Biomedical Engineering, NIBE is a non-governmental organisation representing the biomedical engineering and technology profession and its members in Nigeria and in international organisations, having members numbering over 5,000, from the clinical setting, academia, industry, research and training, and the government.</p>
 
-          <p>NIBE was established in 1999 with the vision Ã¢â‚¬Å“to develop and advance the biomedical science, health and human well-being of Nigeria through modern technological approaches comparable to those obtainable in any developed country of the worldÃ¢â‚¬Â.</p>
+          <p>NIBE was established in 1999 with the vision to develop and advance the biomedical science, health and human well-being of Nigeria through modern technological approaches comparable to those obtainable in any developed country of the world.</p>
           <p>
           NIBE advocates interdisciplinary scientific and professional biomedical engineering activities within Nigeria between the broad disciplines of biology, medicine and engineering in addition to allied subjects. In line with this, it defines biomedical engineering as: a discipline that advances knowledge in engineering, biology and medicine and improves human health through cross-disciplinary activities that integrate the engineering sciences with the biomedical science and clinical practice.</p>
           <p>
@@ -34,11 +32,11 @@ const Aboutpage = () => {
           <p>
           NIBE has published a newsletter, news@nibe since 2000; a professional journal, Nigerian Journal of Biomedical Engineering since 2001; and electronic mail news, e-nibe since 2003; and now has embraced the social media as a means of information dissemination.</p>
           <p>
-          In 2003, NIBE was admitted as the 50th member of the International Federation of Medical and Biological Engineering (IFMBE) and the International Union for Physical and Engineering Sciences in Medicine (IUPESM) . The same year, it spearheaded the formation of the African Union of Biomedical Engineering and Sciences (AUBES) in Ghana while some of its members were on a Medical Equipment Training with other African biomedical engineering professionals.</p>
+          In 2003, NIBE was admitted as the 50th member of the <a href="https://www.ifmbe.org">International Federation of Medical and Biological Engineering (IFMBE)</a> and <a href="https://www.iupesm.org"> the International Union for Physical and Engineering Sciences in Medicine (IUPESM)</a> . The same year, it spearheaded the formation of the <a href="https://www.africanbmes.org">African Union of Biomedical Engineering and Sciences (AUBES)</a> in Ghana while some of its members were on a Medical Equipment Training with other African biomedical engineering professionals.</p>
           <p>
           In her 10th Anniversary, during the 10th Annual General Meeting, Thursday 29th October, 2009, Abuja, Nigeria, NIBE streamlined its five functional capacities: as a professional institute; as a technical authority; as a learned society; as a qualifying body; and as a regulating body,</p>
           <p>
-          In line with this, NIBE established two bodies: 1) a membership association, Association of Biomedical Engineers & Technologists of Nigeria, to take over the functions of a professional institute and of a technical authority; 2) a professional college, College of Biomedical Engineering & Technology, to take over the functions of a learned society and of a qualifying body.
+          In line with this, NIBE established two bodies: 1) a membership association,<a href="https://www.nabet.org.ng"> Association of Biomedical Engineers & Technologists of Nigeria</a>, to take over the functions of a professional institute and of a technical authority; 2) a professional college, <Link to='/cbet'>College of Biomedical Engineering & Technology</Link>, to take over the functions of a learned society and of a qualifying body.
           NIBE as the coordinating body retains the function of a regulating body, and, following the approval of a proposal to government for a regulating body, shall regulate the practice of biomedical engineering and technology in Nigeria.</p>
         </div>
       </section>
