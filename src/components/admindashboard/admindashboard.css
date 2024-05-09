@@ -643,10 +643,10 @@
     font-size: 1.1rem;
     padding: 10px;
 }
-@media screen and (max-width: 767px) {
+/* @media screen and (max-width: 767px) {
     .gold-card{
         width: 90%;
         height: 300px;
     }
 
-}
+} */

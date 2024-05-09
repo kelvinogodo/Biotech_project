@@ -109,4 +109,9 @@
     .service-card-container{
         flex-direction: column;
     }
+    .post-loader {
+        width: 100%;
+        height: 300px;
+        margin-top: 40px;
+    }
 }
