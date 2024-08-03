@@ -33,9 +33,10 @@ const Overview = ({showOverview,showCreateSection,showEditSection,route,showUpda
   const fetchPdfs = async ()=>{
     const postRequest = await (
      fetch(`${route}/api/fetchPdfs`))
-    const pdfs = await (
+    const fetched_pdfs = await (
      postRequest.json()) 
-    setPdf(pdfs)
+    setPdf(fetched_pdfs)
+    console.log(fetched_pdfs)
   }
 
   // useEffect(()=>{ 
@@ -50,7 +51,7 @@ const Overview = ({showOverview,showCreateSection,showEditSection,route,showUpda
   // },[])
 
   useEffect(() => { fetchPosts() },[])
-  // useEffect(() => { fetchPdfs() },[])
+  useEffect(() => { fetchPdfs() },[])
   
   const [postTitle,setPostTitle] = useState()
   const [postBody, setPostBody] = useState()
@@ -226,14 +227,14 @@ const Overview = ({showOverview,showCreateSection,showEditSection,route,showUpda
       )
     })
     const response = await req.json()
-    setPdf = response.pdfs
+    setPdf(response.pdfs)
     if (response.status = 'ok') {
       Swal.fire(
         'congrats',
         `post successfully updated`,
         'success'
       )
-      setShowImage=''
+      // setShowImage()
     } else {
       Swal.fire(
         'error',
@@ -241,6 +242,7 @@ const Overview = ({showOverview,showCreateSection,showEditSection,route,showUpda
         'error'
       )
     }
+    fetchPdfs()
   }
   
   return (
@@ -372,7 +374,7 @@ const Overview = ({showOverview,showCreateSection,showEditSection,route,showUpda
                                   modal && <div className="ping-container"><div class="ping"></div></div> 
                               }
                             {
-                                showImage === undefined &&  !modal ? <FaFileUpload /> : <img src={`${showImage}`} alt="" className='proof-image'/> 
+                                showImage === undefined &&  !modal ? <FaFileUpload /> : ''
                             }
                         </div>
                         <label htmlFor="proof-img" className='proof-label'>
@@ -397,9 +399,9 @@ const Overview = ({showOverview,showCreateSection,showEditSection,route,showUpda
                   <div className="edit-icon-containers">
                     <RiDeleteBin2Line className='edit-icon' onClick={()=>deletePdf(pdf.file_url)}/>
                   </div>
-                  <img src={`${pdf.file_url}`} alt="" />
+                  <a href={`http://docs.google.com/gview?url=${pdf.file_url}&embedded=true`} about='blank'><p><BsUpload /></p></a>
                 </div>
-                )) : <p> fetching pdf... </p>
+                )) : <p> fetching pdf...</p>
             }
           </section>
           }
