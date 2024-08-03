@@ -17,6 +17,8 @@ const Admindashboard = ({route}) => {
   const [showCreatePropertySection, setShowPropertyCreateSection] = useState(false)
   const [showEditPostSection, setShowEditPostSection] = useState(false)
   const [showEditPropertySection, setShowEditPropertySection] = useState(false)
+  const [showUpdateIndex, setShowUpdateIndex] = useState(false)
+  const [deleteIndex,setDeleteIndex] = useState(false)
 
   const toggleOverview = () => {
     setShowOverview(true)
@@ -48,6 +50,18 @@ const Admindashboard = ({route}) => {
   const closeEdit = () => {
     setShowEditPostSection(false)
   }
+  const toggleUpdateIndex = () => {
+    setShowUpdateIndex(true)
+  }
+  const closeUpdateIndex = () => {
+    setShowUpdateIndex(false)
+  }
+  const openDeleteIndex = () => {
+    setDeleteIndex(true)
+  }
+  const closeDeleteIndex = () => {
+    setDeleteIndex(false)
+  }
   const logout = () => {
     localStorage.removeItem('user')
     window.location.href = '/admin'
@@ -75,6 +89,7 @@ const Admindashboard = ({route}) => {
             closeCreateProperty()
             closeEdit()
             closePropetyEdit()
+            closeUpdateIndex()
           }} />
         </span>
         <span className='user-icon-container'>
@@ -86,6 +101,7 @@ const Admindashboard = ({route}) => {
               closeCreateProperty()
               toggleEdit()
               closePropetyEdit()
+              closeUpdateIndex()
             }}>
               <RiEdit2Fill />
               <p>edit post</p>
@@ -96,6 +112,7 @@ const Admindashboard = ({route}) => {
               closeCreateProperty()
               closeEdit()
               togglePropetyEdit()
+              closeUpdateIndex()
             }}>
               <RiEdit2Fill />
               <p>edit property</p>
@@ -111,6 +128,7 @@ const Admindashboard = ({route}) => {
               closeCreateProperty()
               closeEdit()
               closePropetyEdit()
+              closeUpdateIndex()
             }}>
               <MdOutlineCreateNewFolder />
               <p>create post</p>
@@ -121,6 +139,7 @@ const Admindashboard = ({route}) => {
               toggleCreateProperty()
               closeEdit()
               closePropetyEdit()
+              closeUpdateIndex()
             }}>
               <MdOutlineCreateNewFolder />
               <p>create property</p>
@@ -130,8 +149,8 @@ const Admindashboard = ({route}) => {
       </div>
       <DashboardHeader />
       <div className="dashboard-body">
-        <DashboardSidebar toggleEdit={toggleEdit} toggleCreate={toggleCreate} toggleOverview={toggleOverview} closeOverview={closeOverview} closeCreate={closeCreate} closeEdit={closeEdit} toggleCreateProperty={toggleCreateProperty} togglePropetyEdit={togglePropetyEdit} closeCreateProperty={closeCreateProperty} closePropetyEdit={closePropetyEdit} />
-        <Overview showOverview={showOverview} showCreateSection={showCreatePostSection} showEditSection={showEditPostSection} showCreatePropertySection={showCreatePropertySection} showEditPropertySection={showEditPropertySection} route={route} />
+        <DashboardSidebar toggleEdit={toggleEdit} toggleCreate={toggleCreate} toggleOverview={toggleOverview} closeOverview={closeOverview} closeCreate={closeCreate} closeEdit={closeEdit} toggleCreateProperty={toggleCreateProperty} togglePropetyEdit={togglePropetyEdit} closeCreateProperty={closeCreateProperty} closePropetyEdit={closePropetyEdit} openIndex={toggleUpdateIndex} closeIndex={ closeUpdateIndex} openDeleteIndex={openDeleteIndex} closeDeleteIndex={closeDeleteIndex}/>
+        <Overview showOverview={showOverview} showCreateSection={showCreatePostSection} showEditSection={showEditPostSection} showCreatePropertySection={showCreatePropertySection} showEditPropertySection={showEditPropertySection} route={route} showUpdateIndex={showUpdateIndex} deleteIndex={deleteIndex} />
       </div>
     </>
   )

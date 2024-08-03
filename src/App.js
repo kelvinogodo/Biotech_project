@@ -63,7 +63,8 @@ function App() {
         toast.addEventListener('mouseleave', Swal.resumeTimer)
       }
     })
-    const route = 'https://biotech-backend.onrender.com'
+  // const route = 'https://biotech-backend.onrender.com'
+  const route = 'http://localhost:5000'
   
   return (
     <>

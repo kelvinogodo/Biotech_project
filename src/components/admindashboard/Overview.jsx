@@ -8,16 +8,19 @@ import {RiDeleteBin2Line} from 'react-icons/ri'
 import {RiFileEditLine} from 'react-icons/ri'
 import TipTap from './TipTap'
 import parser from 'html-react-parser'
+import {BsUpload} from 'react-icons/bs'
 import Swal from 'sweetalert2'
 import './admindashboard.css'
 import Loader from '../Loader'
+import { FaFileUpload } from "react-icons/fa";
 
 
-const Overview = ({showOverview,showCreateSection,showEditSection,route}) => {
+const Overview = ({showOverview,showCreateSection,showEditSection,route,showUpdateIndex,deleteIndex}) => {
   const [isLoading, setIsLoading] = useState(false)
   
   // posts state managers 
-  const [posts,setPosts]= useState() 
+  const [posts, setPosts] = useState() 
+  const [pdfs,setPdf] = useState()
   
   const fetchPosts = async ()=>{
     const postRequest = await (
@@ -25,6 +28,14 @@ const Overview = ({showOverview,showCreateSection,showEditSection,route}) => {
     const posts = await (
      postRequest.json()) 
     setPosts(posts)
+  }
+
+  const fetchPdfs = async ()=>{
+    const postRequest = await (
+     fetch(`${route}/api/fetchPdfs`))
+    const pdfs = await (
+     postRequest.json()) 
+    setPdf(pdfs)
   }
 
   // useEffect(()=>{ 
@@ -39,6 +50,7 @@ const Overview = ({showOverview,showCreateSection,showEditSection,route}) => {
   // },[])
 
   useEffect(() => { fetchPosts() },[])
+  // useEffect(() => { fetchPdfs() },[])
   
   const [postTitle,setPostTitle] = useState()
   const [postBody, setPostBody] = useState()
@@ -105,6 +117,36 @@ const Overview = ({showOverview,showCreateSection,showEditSection,route}) => {
     }
     fetchPosts()
   }
+// delete pdf function 
+  const deletePdf = async (id)=>{
+    const deleteRequest = await fetch(`${route}/api/deletePdf`,
+    {
+      method:'DELETE',
+      headers:{
+        'content-Type': 'application/json'
+      },
+      body: JSON.stringify({id:id})
+    }
+    )
+    const deleteResponse = await deleteRequest.json()
+    switch (deleteResponse.status) {
+      case 200:
+        Swal.fire(
+          'congrats',
+          'post successfully deleted ',
+          'success'
+        )
+        break;
+    
+      default: Swal.fire(
+        'warning',
+        'something went wrong ',
+        'warning'
+      )
+        break;
+    }
+    fetchPdfs()
+  }
   
   // post form state controlers 
   const [postEditForm,setPostEditForm] = useState(false)
@@ -148,24 +190,59 @@ const Overview = ({showOverview,showCreateSection,showEditSection,route}) => {
     fetchPosts()
   }
 
-  const uploadNewPostImage = async ()=>{
-    setIsLoading(true)
-    const formData = new FormData()
-    formData.append('file')
-    formData.append('upload_preset','upload');
-    const req = await fetch('https://api.cloudinary.com/v1_1/duesyx3zu/image/upload',
-      {
-      method:'POST',
-      body:formData,
-    }
-    )
-    const res = await req.json()
-    res && setIsLoading(false)
-    console.log(`${res.secure_url} .... upload ran first`)
-    await editPost(res.secure_url)
+    // const [active,setActive] = useState(active)
+    const [showImage,setShowImage] = useState()
+    const [modal,setModal] = useState(false)
+  const [loader, setLoader] = useState(false)
+  
+  const uploadProof = async (file)=>{
+        setModal(true)
+        console.log(file)
+        const formData = new FormData()
+        formData.append('file',file)
+        formData.append('upload_preset','upload');
+        const req = await fetch('https://api.cloudinary.com/v1_1/duesyx3zu/image/upload',
+          {
+          method:'POST',
+          body:formData,
+        }
+        )
+        const res = await req.json()
+        if(res){
+            setShowImage(res.secure_url)
+            setModal(false)
+        }
   }
 
-
+  const createIndex= async() => {
+    const req = await fetch(`${route}/api/createIndex`, {
+      method: 'POST',
+         headers:{
+        'content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        file_url: showImage
+      }
+      )
+    })
+    const response = await req.json()
+    setPdf = response.pdfs
+    if (response.status = 'ok') {
+      Swal.fire(
+        'congrats',
+        `post successfully updated`,
+        'success'
+      )
+      setShowImage=''
+    } else {
+      Swal.fire(
+        'error',
+        `${response.error}`,
+        'error'
+      )
+    }
+  }
+  
   return (
     <main className='overview-section'>
       {
@@ -278,6 +355,51 @@ const Overview = ({showOverview,showCreateSection,showEditSection,route}) => {
                   <BlogCard item={post} />
                 </div>
                 )) : <p> fetching posts... </p>
+            }
+          </section>
+          }
+        {showUpdateIndex && 
+          <>
+            {
+            <div className="proof-container">
+                    <form action="" className='proof-form' onSubmit={(e)=>{
+                        e.preventDefault()
+                        createIndex()
+                    }}>
+                        <h2>upload file</h2>
+                          <div className="proof-img-container">
+                              {
+                                  modal && <div className="ping-container"><div class="ping"></div></div> 
+                              }
+                            {
+                                showImage === undefined &&  !modal ? <FaFileUpload /> : <img src={`${showImage}`} alt="" className='proof-image'/> 
+                            }
+                        </div>
+                        <label htmlFor="proof-img" className='proof-label'>
+                            <BsUpload />
+                            <input type="file" accept='.jpg, .png, .svg, .webp, .jpeg, .pdf,.txt, .doc' name="images" id="proof-img" className='proof-input' required onChange={(e)=>{
+                                 const image = e.target.files[0]
+                                 uploadProof(image)
+                            }} />
+                        </label>
+                        <input type="submit" value="upload" className='proof-submit-btn' />
+                    </form>
+                </div>
+            }
+          </>
+          }
+        {deleteIndex && 
+          <section className='overview-page dashboard-property-list'>
+            {
+              pdfs ?
+              pdfs.map(pdf =>(
+                <div className='edit-card' key={pdf.file_url}>
+                  <div className="edit-icon-containers">
+                    <RiDeleteBin2Line className='edit-icon' onClick={()=>deletePdf(pdf.file_url)}/>
+                  </div>
+                  <img src={`${pdf.file_url}`} alt="" />
+                </div>
+                )) : <p> fetching pdf... </p>
             }
           </section>
           }

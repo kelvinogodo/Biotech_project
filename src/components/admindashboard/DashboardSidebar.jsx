@@ -1,7 +1,9 @@
 import {AiOutlineHome} from 'react-icons/ai'
-import {MdOutlineCreateNewFolder} from 'react-icons/md'
-import {FiEdit3} from 'react-icons/fi'
-const DashboardSidebar = ({toggleEdit,toggleCreate,toggleOverview,closeEdit,closeCreate,closeOverview,toggleCreateProperty,togglePropetyEdit,closeCreateProperty,closePropetyEdit}) => {
+import { MdOutlineCreateNewFolder } from 'react-icons/md'
+import { IoCloudUploadOutline } from "react-icons/io5";
+import { FiEdit3 } from 'react-icons/fi'
+import { MdOutlineDeleteOutline } from "react-icons/md";
+const DashboardSidebar = ({toggleEdit,toggleCreate,toggleOverview,closeEdit,closeCreate,closeOverview,openIndex,closeIndex,closeCreateProperty,closePropetyEdit,openDeleteIndex,closeDeleteIndex}) => {
   return (
     <aside className='dashboard-aside'>
        <div className="tab" onClick={()=>{
@@ -10,6 +12,8 @@ const DashboardSidebar = ({toggleEdit,toggleCreate,toggleOverview,closeEdit,clos
         closeCreate()
         closeCreateProperty()
         closePropetyEdit()
+        closeIndex()
+        closeDeleteIndex()
         }}>
           <AiOutlineHome className='tab-icon'/>
           <p>overview</p>
@@ -21,7 +25,9 @@ const DashboardSidebar = ({toggleEdit,toggleCreate,toggleOverview,closeEdit,clos
               closeEdit()
               closeOverview()
               closeCreateProperty()
-              closePropetyEdit()
+          closePropetyEdit()
+          closeIndex()
+          closeDeleteIndex()
               }}>create post</p>
        </div>
        <div className="tab">
@@ -32,8 +38,36 @@ const DashboardSidebar = ({toggleEdit,toggleCreate,toggleOverview,closeEdit,clos
               closeOverview()
               closeCreate()
               closePropetyEdit()
-              closeCreateProperty()
+            closeCreateProperty()
+            closeIndex()
+            closeDeleteIndex()
               }}>edit post</p>
+       </div>
+       <div className="tab">
+          <IoCloudUploadOutline />
+            <p
+            onClick={()=>{
+              openIndex()
+              closeOverview()
+              closeCreate()
+              closePropetyEdit()
+              closeCreateProperty()
+            closeEdit()
+            closeDeleteIndex()
+              }}>upload index</p>
+       </div>
+       <div className="tab">
+          <MdOutlineDeleteOutline />
+            <p
+          onClick={() => {
+              openDeleteIndex()
+              closeIndex()
+              closeOverview()
+              closeCreate()
+              closePropetyEdit()
+              closeCreateProperty()
+              closeEdit()
+              }}>delete index</p>
        </div>
     </aside>
   )
